@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocify website</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+   
+     <!--font awesome cdn link-->
+
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+   
+     <!--custom css file link-->
+     <link rel="stylesheet" href="mystyle.css">
+
+</head>
+<body>
+    
+    <!--header section start-->
+    <header class="header">
+        <div class ="header-1">
+
+            <a href="#" class="logo"><i class="fas fa-shopping-basket"></i>Grocify</a>
+    
+            <form action="" class="search-box-container">
+                <input type="search" id="search-box"placeholder="search here......"  onkeyup="search()">
+                <label for="search-box"class="fas fa-search"></label>
+               
+                
+            </form>
+        </div>
+                <div class="header-2">
+                   
+                    <div id="menu-bar"class="fas fa-bars"></div>
+
+
+                    <nav class="navbar">
+                        <a href="index.html">Home</a>
+                        <a href="product.html">Product</a>
+                        <a href="category.html">Category</a>
+                        <a href="orders.html">Orders</a>
+                        <a href="contacts.html">Contact</a>
+                       
+                    </nav>
+                    <div class="icons">
+                        <span id="cart-count">0</span>
+                        <a href="cart.html" class="fas fa-shopping-cart"></a>
+                        
+                        <a href="wishlist.html" class="fa fa-heart"></a>
+                        <a href="profile.html" class="fas fa-user"></a>
+                        <a href="signin.html">login</a>
+                    </div>
+                </div>
+            </div>
+    </header>
+
+    <section>
+            <!-- Wishlist Section -->
+            <div class="wishlist-container">
+                <h2>Your Wishlist</h2>
+                <div class="wishlist-content">
+                    <div class="cart-header">
+                        <div class="cart-column remove">Remove</div>
+                        <div class="cart-column image">Image</div>
+                        <div class="cart-column item">product</div>
+                        <div class="cart-column price">Price</div>
+                        <div class="cart-column quantity">Quantity</div>
+                        <div class="cart-column tlt">cart</div>
+                    </div>
+                    <div class="wishlist-items">
+                        <!-- Wishlist items will be dynamically loaded here -->
+                    </div>
+                   
+                </div>
+                <button type="button" class="btn">Clear All</button>
+            </div>
+   
+    </section>
+
+
+     <!--scrollup-icon-->
+     <div id="scrollup-icon" class="show">
+        <a href="#" class="scrollup-link">▲</a>
+      </div>
+
+    <!--footer section starts-->
+    <footer class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>Grocify <i class ="fas fa-shopping-basket"></i></h3>
+                <p>Feel free to follow us on our social media handlers all the links are given below.</p>
+
+                <div class="share">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-linkedin"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3>Contact Info</h3>
+                <a href="#" class="links"><i class="fas fa-phone"></i>+91 987654321</a>
+                <a href="#" class="links"><i class="fas fa-phone"></i>+91 987654322</a> 
+                <a href="#" class="links"><i class="fas fa-envelope"></i>info@example.com</a>
+                <a href="#" class="links"><i class="fas fa-map-marker"></i>Bangalore, India</a>
+            </div>
+
+            <div class="box">
+                <h3>Quick Links</h3>
+                <a href="index.html" class="links">Home</a>
+                <a href="product.html" class="links">Product</a>
+                <a href="category.html" class="links">Category</a>
+                <a href="orders.html" class="links">Orders</a>
+                <a href="profile.html" class="links">Profile</a>
+                <a href="reviews.html" class="links">reviews</a>
+            </div>
+            <div class="box">
+                <h3>Newsletter</h3>
+                <p>Subscribe for latest updates</p>
+                <input type="email" id="emailid" placeholder="Enter your email...."><br>
+                <input type="submit" value="subscribe" class="btn"><br>
+                <img src="image1/payment 2.jpeg"height="30" alt="">
+            </div>
+        </div>
+
+        <div class="footer-copy-right">
+             <p> 2024 Grocery Website. All Rights Reserved. </p>
+        </div>
+    </footer>
+      
+
+
+
+              <!--footer section ends-->
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+    <!--custom js file link-->
+    <script src="cart.js"></script>
+
+</body>
+</html>

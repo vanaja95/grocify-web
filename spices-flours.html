@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocify website</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+   
+
+
+     <!--font awesome cdn link-->
+
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+   
+     <!--custom css file link-->
+     <link rel="stylesheet" href="mystyle.css">
+
+</head>
+<body>
+    
+    <!--heaser section start-->
+    <header class="header">
+        <div class ="header-1">
+
+            <a href="#" class="logo"><i class="fas fa-shopping-basket"></i>Grocify</a>
+    
+            <form action="" class="search-box-container">
+                <input type="search" id="search-box"placeholder="search here......">
+                <label for="search-box"class="fas fa-search"></label>
+                
+            </form>
+        </div>
+                <div class="header-2">
+                   
+                    <div id="menu-bar"class="fas fa-bars"></div>
+
+
+                    <nav class="navbar">
+                        <a href="index.html">home</a>
+                        <a href="product.html">Product</a>
+                        <a href="category.html">Category</a>
+                        <a href="orders.html">Orders</a>
+                        <a href="contacts.html">Contact</a>
+                    </nav>
+                    <div class="icons">
+                        <span id="cart-count">0</span>
+                        <a href="cart.html" class="fas fa-shopping-cart"></a>
+                        <a href="wishlist.html" class="fa fa-heart"></a>
+                        <a href="profile.html" class="fas fa-user"></a>
+                        <a href="signin.html">login</a>
+                    </div>
+                </div>
+            </div>
+    </header>
+
+     <!--header section ends-->
+
+      <!--scrollup-icon-->
+      <div id="scrollup-icon" class="show">
+        <a href="#" class="scrollup-link">▲</a>
+      </div>
+
+<!--category page starts-->
+<section class ="category-page">
+    <div class="category-image">
+        <img src="images/cat-1.jpg"alt="">
+    </div>
+
+    <div class = "category-content">
+       
+        <span class="sn">Grocery Deliver service</span>
+        <h3>Make Healthy <br>Life With <span>Fresh </span><br>Grocery</h3>
+        <p>Get the best quality and most delicious grocery food in<br> the world, you can get them all use our website </p><br><br>
+        <a href="category.html" class="button">shop now</a>
+        
+    </div>
+    <div class="category-container">
+        <div class="category-box">
+            <h3>Fruits</h3>
+            <p>upto 40% off</p>
+            <img src="images/fruits-1.png">
+            <a href="fruit.html#our-product" class="button">shop now</a>
+        </div>
+
+        <div class="category-box">
+            <h3>vegitables</h3>
+            <p>upto 50% off</p>
+            <img src="images/vegitables1.png" alt="">
+            <a href="vegitable.html#our-product" class="button">shop now</a>
+        </div>
+
+        <div class="category-box">
+            <h3>spices & flours</h3>
+            <p>upto 35% off</p>
+            <img src="images/spice-3.jpeg" alt="">
+            <a href="spices-flours.html#our-product" class="button">shop now</a>
+        </div>
+
+        <div class="category-box">
+            <h3>Meat</h3>
+            <p>upto 20% off</p>
+            <img src="images/meat-1.png"alt="">
+            <a href="meat.html#our-product" class="button">shop now</a>
+        </div>
+
+        <div class="category-box">
+            <h3>snacks items</h3>
+            <p>upto 15% off</p>
+            <img src="images/snacks.png"width="20%" alt="">
+            <a href="snacks.html#our-product" class="button">shop now</a>
+        </div>
+        <div class="category-box">
+            <h3>shampoos & lotions</h3>
+            <p>upto 15% off</p>
+            <img src="images/shampoose.jpg"width="20%" alt="">
+            <a href="shampoos-lotion.html#our-product" class="button">shop now</a>
+        </div>
+    </div>
+
+</section>
+
+
+
+<section class="product" id="our-product">
+    <div class="box-container">
+        <div class="box"id="product-1">
+            <span class ="discount">-35% </span>
+            <div class="icon">
+                <a href ="#" class="fas fa-heart"></a>
+                <a href ="#" class="fas fa-share"></a>
+                <a href ="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/amchur powder.webp"height="300" alt="">
+            <h3>Amchur Powder</h3><br><br><br>
+            <div class="price"> ₹59.50 </div>
+            <div class="quantity">
+            <span>quantity :</span>
+            <input type="number" min ="1" max ="1000"class="cart-quantity"  value="1">
+        <span>/kg</span>
+        </div>
+        <a href="#"class="btn">add to cart</a>
+        </div>
+        
+        
+        <div class="box"id="product-2">
+            <span class ="discount">-33% </span>
+            <div class="icon">
+                <a href ="#" class="fas fa-heart"></a>
+                <a href ="#" class="fas fa-share"></a>
+                <a href ="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/chhole masala.webp"height="300" alt="">
+            <h3>Chhole Masala</h3><br><br>
+            
+            
+            <div class="price"> ₹120.50 </div>
+            <div class="quantity">
+            <span>quantity :</span>
+            <input type="number" min ="1" max ="1000"class="cart-quantity"  value="1">
+        <span>/kg</span>
+        </div>
+        <a href="#"class="btn">add to cart</a>
+        </div>
+        
+        
+        <div class="box"id="product-3">
+            <span class ="discount">-33% </span>
+            <div class="icon">
+                <a href ="#" class="fas fa-heart"></a>
+                <a href ="#" class="fas fa-share"></a>
+                <a href ="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/chilli powder.webp"height="300" alt="">
+            <h3>Chilli Powder</h3><br><br>
+            
+            <div class="price"> ₹250.50</div>
+            <div class="quantity">
+            <span>quantity :</span>
+            <input type="number" min ="1" max ="1000"class="cart-quantity"  value="1">
+        <span>/kg</span>
+        </div>
+        <a href="#"class="btn">add to cart</a>
+        </div>
+        
+        <div class="box"id="product-4">
+            <span class ="discount">-17% </span>
+            <div class="icon">
+                <a href ="#" class="fas fa-heart"></a>
+                <a href ="#" class="fas fa-share"></a>
+                <a href ="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/chat masala.webp"height="300" alt="">
+            <h3>Chat Masala</h3><br><br>
+            
+            <div class="price"> ₹120.50 </div>
+            <div class="quantity">
+            <span>quantity :</span>
+            <input type="number" min ="1" max ="1000" class="cart-quantity" value="1">
+        <span>/kg</span>
+        </div>
+        <a href="#"class="btn">add to cart</a>
+        </div>
+        
+        <div class="box"id="product-5">
+            <span class ="discount">-10% </span>
+            <div class="icon">
+                <a href ="#" class="fas fa-heart"></a>
+                <a href ="#" class="fas fa-share"></a>
+                <a href ="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/jeera.webp"height="300" alt="">
+            <h3>Jeera</h3><br><br>
+            
+            <div class="price"> ₹600.40 </div>
+            <div class="quantity">
+            <span>quantity :</span>
+            <input type="number" min ="1" max ="1000"class="cart-quantity"  value="1">
+        <span>/kg</span>
+        </div>
+        <a href="#"class="btn">add to cart</a>
+        </div>
+        
+        <div class="box"id="product-6">
+            <span class ="discount">-5% </span>
+            <div class="icon">
+                <a href ="#" class="fas fa-heart"></a>
+                <a href ="#" class="fas fa-share"></a>
+                <a href ="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/Patta Bay leaf.webp"height="300" alt="">
+            <h3>Patta Bay leaf</h3><br><br>
+            
+            <div class="price"> ₹57.50 </div>
+            <div class="quantity">
+            <span>quantity :</span>
+            <input type="number" min ="1" max ="1000"class="cart-quantity"  value="1">
+        <span>/kg</span>
+        </div>
+        <a href="#"class="btn">add to cart</a>
+        </div>
+        
+        <div class="box"id="product-7">
+            <span class ="discount">-15% </span>
+            <div class="icon">
+                <a href ="#" class="fas fa-heart"></a>
+                <a href ="#" class="fas fa-share"></a>
+                <a href ="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/garam masala.webp"height="300" alt="">
+            <h3>Garam Masala</h3><br><br>
+            
+            <div class="price"> ₹100.20 </div>
+            <div class="quantity">
+            <span>quantity :</span>
+            <input type="number" min ="1" max ="1000"class="cart-quantity"  value="1">
+        <span>/kg</span>
+        </div>
+        <a href="#"class="btn">add to cart</a>
+        </div>
+        
+        
+        <div class="box"id="product-8">
+            <span class ="discount">-13% </span>
+            <div class="icon">
+                <a href ="#" class="fas fa-heart"></a>
+                <a href ="#" class="fas fa-share"></a>
+                <a href ="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/turmeric.webp"height="300" alt="">
+            <h3>Turmeric Powder</h3><br><br>
+            
+            <div class="price"> ₹110.10</div>
+            <div class="quantity">
+            <span>quantity :</span>
+            <input type="number" min ="1" max ="1000"class="cart-quantity"  value="1">
+        <span>/kg</span>
+        </div>
+        <a href="#"class="btn">add to cart</a>
+        </div>
+        
+        <div class="box"id="product-9">
+            <span class ="discount">-9% </span>
+            <div class="icon">
+                <a href ="#" class="fas fa-heart"></a>
+                <a href ="#" class="fas fa-share"></a>
+                <a href ="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/black-gram-urad-dal-minapappu-whole.jpg"height="300" alt="">
+            <h3>Black Gram</h3><br><br>
+            
+            <div class="price"> ₹890.10 </div>
+            <div class="quantity">
+            <span>quantity :</span>
+            <input type="number" min ="1" max ="1000"class="cart-quantity"  value="1">
+        <span>/kg</span>
+        </div>
+        <a href="#"class="btn">add to cart</a>
+        </div>
+        <div class="box"id="product-10">
+            <span class ="discount">-5% </span>
+            <div class="icon">
+                <a href ="#" class="fas fa-heart"></a>
+                <a href ="#" class="fas fa-share"></a>
+                <a href ="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/bengal-gram-sanagapappu-bangaal-graam.jpg"height="300" alt="">
+            <h3>Bengal Gram</h3><br><br>
+            
+            <div class="price"> ₹450.50 </div>
+            <div class="quantity">
+            <span>quantity :</span>
+            <input type="number" min ="1" max ="1000"class="cart-quantity"  value="1">
+        <span>/kg</span>
+        </div>
+        <a href="#"class="btn">add to cart</a>
+        </div>
+        
+        <div class="box" id="product-11">
+            <span class="discount">-35%</span>
+            <div class="icon">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/download (9).jpeg" height="300" alt="">
+            <h3>chakkiatta</h3>
+            <div class="price">₹345.50</div>
+            <div class="quantity">
+                <span>Quantity:</span>
+                <input type="number" min="1" max="1000" class="cart-quantity" value="1">
+                <span>/kg</span>
+            </div>
+            <a href="#" class="btn">Add to Cart</a>
+        </div>
+
+        <div class="box" id="product-12">
+            <span class="discount">-35%</span>
+            <div class="icon">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/salt.jfif" height="300" alt="">
+            <h3>tata salt</h3>
+            <div class="price">₹35.40</div>
+            <div class="quantity">
+                <span>Quantity:</span>
+                <input type="number" min="1" max="1000" class="cart-quantity" value="1">
+                <span>/kg</span>
+            </div>
+            <a href="#" class="btn">Add to Cart</a>
+        </div>
+
+        <div class="box" id="product-13">
+            <span class="discount">-35%</span>
+            <div class="icon">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/aashirvaad.jfif" height="300" alt="">
+            <h3>aashirvaad</h3>
+            <div class="price">₹225.80</div>
+            <div class="quantity">
+                <span>Quantity:</span>
+                <input type="number" min="1" max="1000" class="cart-quantity" value="1">
+                <span>/kg</span>
+            </div>
+            <a href="#" class="btn">Add to Cart</a>
+        </div>
+
+        <div class="box" id="product-14">
+            <span class="discount">-35%</span>
+            <div class="icon">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/black pepper_.jpg" height="300" alt="">
+            <h3>black pepper</h3>
+            <div class="price">₹145.50</div>
+            <div class="quantity">
+                <span>Quantity:</span>
+                <input type="number" min="1" max="1000" class="cart-quantity" value="1">
+                <span>/kg</span>
+            </div>
+            <a href="#" class="btn">Add to Cart</a>
+        </div>
+        
+        <div class="box" id="product-15">
+            <span class="discount">-35%</span>
+            <div class="icon">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/maida.jfif" height="300" alt="">
+            <h3>maida</h3>
+            <div class="price">₹60.80</div>
+            <div class="quantity">
+                <span>Quantity:</span>
+                <input type="number" min="1" max="1000" class="cart-quantity" value="1">
+                <span>/kg</span>
+            </div>
+            <a href="#" class="btn">Add to Cart</a>
+        </div>
+         
+
+        <div class="box"id="product-16">
+            <span class ="discount">-15% </span>
+            <div class="icon">
+                <a href ="#" class="fas fa-heart"></a>
+                <a href ="#" class="fas fa-share"></a>
+                <a href ="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/besan powder.webp"height="300" alt="">
+            <h3>besan powder</h3><br><br>
+           
+            <div class="price">  ₹60.50 </div>
+            <div class="quantity">
+            <span>quantity :</span>
+            <input type="number" min ="1" max ="1000"class="cart-quantity" value="1">
+        <span>/kg</span>
+        </div>
+        <a href="#"class="btn">add to cart</a>
+        </div>
+        <div class="box"id="product-17">
+            <span class ="discount">-10% </span>
+            <div class="icon">
+                <a href ="#" class="fas fa-heart"></a>
+                <a href ="#" class="fas fa-share"></a>
+                <a href ="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/biryani masala.jpeg"height="300" alt="">
+            <h3>biryani masala</h3><br><br>
+        
+            <div class="price">  ₹80.30 </div>
+            <div class="quantity">
+            <span>quantity :</span>
+            <input type="number" min ="1" max ="1000"class="cart-quantity" value="1">
+        <span>/kg</span>
+        </div>
+        <a href="#"class="btn">add to cart</a>
+        </div>
+        
+        <div class="box"id="product-18">
+            <span class ="discount">-12% </span>
+            <div class="icon">
+                <a href ="#" class="fas fa-heart"></a>
+                <a href ="#" class="fas fa-share"></a>
+                <a href ="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/coriander powder.jpg"height="300" alt="">
+            <h3>coriander powder</h3><br><br>
+            
+            <div class="price">  ₹270.50 </div>
+            <div class="quantity">
+            <span>quantity :</span>
+            <input type="number" min ="1" max ="1000"class="cart-quantity" value="1">
+        <span>/kg</span>
+        </div>
+        <a href="#"class="btn">add to cart</a>
+        </div>
+        
+        <div class="box"id="product-19">
+            <span class ="discount">-8% </span>
+            <div class="icon">
+                <a href ="#" class="fas fa-heart"></a>
+                <a href ="#" class="fas fa-share"></a>
+                <a href ="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/chicken masala.jpeg"height="300" alt="">
+            <h3>chicken masala</h3><br><br>
+            
+            <div class="price">  ₹60.80 </div>
+            <div class="quantity">
+            <span>quantity :</span>
+            <input type="number" min ="1" max ="1000"class="cart-quantity" value="1">
+        <span>/kg</span>
+        </div>
+        <a href="#"class="btn">add to cart</a>
+        </div>
+        
+        <div class="box"id="product-20">
+            <span class ="discount">-10% </span>
+            <div class="icon">
+                <a href ="#" class="fas fa-heart"></a>
+                <a href ="#" class="fas fa-share"></a>
+                <a href ="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/corn flour.webp"height="300" alt="">
+            <h3>corn flour</h3><br><br>
+            
+            <div class="price">  ₹180.60 </div>
+            <div class="quantity">
+            <span>quantity :</span>
+            <input type="number" min ="1" max ="1000" class="cart-quantity"value="1">
+        <span>/kg</span>
+        </div>
+        <a href="#"class="btn">add to cart</a>
+        </div>
+        
+        <div class="box"id="product-21">
+            <span class ="discount">-10% </span>
+            <div class="icon">
+                <a href ="#" class="fas fa-heart"></a>
+                <a href ="#" class="fas fa-share"></a>
+                <a href ="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/fenugreek powder_.jpg"height="300" alt="">
+            <h3>fenugreek powder</h3><br><br>
+            
+            <div class="price">  ₹150.70 </div>
+            <div class="quantity">
+            <span>quantity :</span>
+            <input type="number" min ="1" max ="1000" class="cart-quantity"value="1">
+        <span>/kg</span>
+        </div>
+        <a href="#"class="btn">add to cart</a>
+        </div>
+        <div class="box"id="product-22">
+            <span class ="discount">-15% </span>
+            <div class="icon">
+                <a href ="#" class="fas fa-heart"></a>
+                <a href ="#" class="fas fa-share"></a>
+                <a href ="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/rice flour.jpeg"height="300" alt="">
+            <h3>rice flour</h3><br><br>
+            
+            <div class="price">  ₹70.80 </div>
+            <div class="quantity">
+            <span>quantity :</span>
+            <input type="number" min ="1" max ="1000"class="cart-quantity" value="1">
+        <span>/kg</span>
+        </div>
+        <a href="#"class="btn">add to cart</a>
+        </div>
+        
+       
+    
+    </div>
+       
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <!--footer section starts-->
+     <footer class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>Grocify <i class ="fas fa-shopping-basket"></i></h3>
+                <p>Feel free to follow us on our social media <br>handlers all the links are given below.</p>
+
+                <div class="share">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-linkedin"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3>Contact Info</h3>
+                <a href="#" class="links"><i class="fas fa-phone"></i>+91 987654321</a>
+                <a href="#" class="links"><i class="fas fa-phone"></i>+91 987654322</a> 
+                <a href="#" class="links"><i class="fas fa-envelope"></i>info@example.com</a>
+                <a href="#" class="links"><i class="fas fa-map-marker"></i>Bangalore, India</a>
+            </div>
+
+            <div class="box">
+                <h3>Quick Links</h3>
+                <a href="index.html" class="links">Home</a>
+                <a href="product.html" class="links">Product</a>
+                <a href="category.html" class="links">Category</a>
+                <a href="orders.html" class="links">Orders</a>
+                <a href="profile.html" class="links">Profile</a>
+                <a href="reviews.html" class="links">reviews</a>
+            </div>
+            <div class="box">
+                <h3>Newsletter</h3>
+                <p>Subscribe for latest updates</p>
+                <input type="email" id="emailid" placeholder="Enter your email...."><br>
+                <input type="submit" value="subscribe" class="btn"><br>
+                <img src="image1/payment 2.jpeg"height="30" alt="">
+            </div>
+        </div>
+
+        <div class="footer-copy-right">
+             <p> 2024 Grocery Website. All Rights Reserved. </p>
+        </div>
+    </footer>
+   
+
+
+
+              <!--footer section ends-->
+        <!--footer section ends-->
+        <script src="cart.js"></script>
+    
+    </body>
+    </html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocify website</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+     <!--font awesome cdn link-->
+
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+   
+     <!--custom css file link-->
+     <link rel="stylesheet" href="mystyle.css">
+
+</head>
+<body>
+    
+    <!--heaser section start-->
+    <header class="header">
+        <div class ="header-1">
+
+            <a href="#" class="logo"><i class="fas fa-shopping-basket"></i>Grocify</a>
+    
+            <form action="" class="search-box-container">
+                <input type="search" id="search-box"placeholder="search here......">
+                <label for="search-box"class="fas fa-search"></label>
+                
+            </form>
+        </div>
+                <div class="header-2">
+                   
+                    <div id="menu-bar"class="fas fa-bars"></div>
+
+
+                    <nav class="navbar">
+                        <a href="index.html">home</a>
+                        <a href="product.html">Product</a>
+                        <a href="category.html">Category</a>
+                        <a href="orders.html">Orders</a>
+                        <a href="contacts.html">Contact</a>
+                        
+                    </nav>
+                    <div class="icons">
+                       
+                       
+                        <a href="signin.html">login</a>
+                    </div>
+                </div>
+            </div>
+    </header>
+
+     <!--header section ends-->
+
+
+
+     <!--account page login and singup page starts-->
+     <section class="account-page">
+        <div class="container" id="container">
+            <!-- Sign Up Form -->
+            <div class="form-container sign-up">
+                <form action="/register" method="POST">
+                    <h1>Create Account</h1>
+                    <div class="social-icons">
+                        <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                    <span>or use your email for registration</span>
+                    <input type="text" placeholder="Name">
+                    <input type="email" placeholder="Email">
+                    <input type="password" placeholder="Password">
+                    <button>Sign Up</button>
+                </form>
+            </div>
+            
+            <!-- Sign In Form -->
+            <div class="form-container sign-in">
+                <form action="/register" method="POST">
+                    <h1>Sign In</h1>
+                    <div class="social-icons">
+                        <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                    <span>or use your email password</span>
+                    <input type="email" placeholder="Email">
+                    <input type="password" placeholder="Password">
+                    <a href="#" id="forgot-password-link">Forget Your Password?</a>
+                    <button>Sign In</button>
+                </form>
+            </div>
+            
+            <!-- Forgot Password Form -->
+            <div class="form-container forgot-password" style="display: none;">
+                <form>
+                    <h1>Forgot Password</h1>
+                    <span>Enter your email to<br>receive a password reset link</span>
+                    <input type="email" placeholder="Email">
+                    <button>Send Reset Link</button>
+                    <a href="#" id="back-to-sign-in">Back to Sign In</a>
+                </form>
+            </div>
+            
+            <!-- Toggle Container -->
+            <div class="toggle-container">
+                <div class="toggle">
+                    <div class="toggle-panel toggle-left">
+                        <h1>Welcome Back!</h1>
+                        <p>Enter your personal details to use all of site features</p>
+                        <button class="hidden" id="login">Sign In</button>
+                    </div>
+                    <div class="toggle-panel toggle-right">
+                        <h1>Hello, Friend!</h1>
+                        <p>Register with your personal details to use all of site features</p>
+                        <button class="hidden" id="register">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+
+     <!--account page login and singup page starts-->
+
+
+
+
+     <!--footer section starts-->
+     <footer class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>Grocify <i class ="fas fa-shopping-basket"></i></h3>
+                <p>Feel free to follow us on our social media handlers all the links are given below.</p>
+
+                <div class="share">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-linkedin"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3>Contact Info</h3>
+                <a href="#" class="links"><i class="fas fa-phone"></i>+91 987654321</a>
+                <a href="#" class="links"><i class="fas fa-phone"></i>+91 987654322</a> 
+                <a href="#" class="links"><i class="fas fa-envelope"></i>info@example.com</a>
+                <a href="#" class="links"><i class="fas fa-map-marker"></i>Bangalore, India</a>
+            </div>
+
+            <div class="box">
+                <h3>Quick Links</h3>
+                <a href="index.html" class="links">Home</a>
+                <a href="product.html" class="links">Product</a>
+                <a href="category.html" class="links">Category</a>
+                <a href="orders.html" class="links">Orders</a>
+                <a href="profile.html" class="links">Profile</a>
+                <a href="reviews.html" class="links">reviews</a>
+            </div>
+            <div class="box">
+                <h3>Newsletter</h3>
+                <p>Subscribe for latest updates</p>
+                <input type="email" id="emailid" placeholder="Enter your email....">
+                <input type="submit" value="subscribe" class="btn"><br>
+                <img src="image1/payment 2.jpeg"height="30" alt="">
+            </div>
+        </div>
+
+        <div class="footer-copy-right">
+             <p> 2024 Grocery Website. All Rights Reserved. </p>
+        </div>
+    </footer>
+   
+
+
+
+              <!--footer section ends-->
+               <!--custom js file link-->
+
+               <script src="signin.js"></script>
+
+</body>
+</html>

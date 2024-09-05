@@ -1,0 +1,148 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #ace6f3;
+    overflow: hidden;
+    align-items: center;
+    justify-content: space-between;
+    padding:.5rem 9%;
+}
+
+.navbar .logo {
+    float: left;
+    color: #043f72;
+    padding: 14px 20px;
+    font-size: 25px;
+}
+
+.navbar .user-options a {
+    float: right;
+    color: #043f72;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.orders-list {
+    margin: 20px;
+}
+
+.orders-list h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.order {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.order h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.order ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order li {
+    margin-bottom: 5px;
+}
+/* footer css */
+
+footer{
+    background-color:#ace6f3;
+    background-size: cover;
+}
+ .box-container{
+   
+   display:flex;
+   justify-content: space-between;
+   padding:40px 100px;
+   align-content: space-between;
+   column-gap:5rem;
+   padding-left: 25px;
+   padding:3rem 5rem;
+    
+}
+.footer .box-container .box h3{
+    font-size:2rem;
+    color:var(--black);
+    padding:1rem 2rem;
+}
+.footer .box-container .box h3 i{
+    color:var(--green);
+}
+
+.footer .box-container .box .links{
+    display:block;
+    font-size:1.5rem;
+    color:var(--light-color);
+    padding:1rem 0;
+}
+.footer .box-container .box .link i{
+    color:var(--green);
+    padding-right: .5rem;
+}
+.footer .box-container .box .links:hover i{
+    padding-right: 2rem;
+}
+.footer .box-container .box p{
+    line-height: 1.8;
+    font-size: 1.5rem;
+    color: var(--light-color);
+    padding :1rem 0;
+}
+.footer .box-container .box .share a {
+    border:1px soild; 
+    height: 4rem;
+    width:4rem;
+    line-height: 4rem;
+    border-radius: .5rem;
+    font-size:2rem;
+    color:var(--black);
+    margin-left:.2rem;
+    color:var(--light-color);
+}
+.footer .box-container .box .share a i:hover{
+    color:var(--black);
+}
+.footer .box-container .box img{
+    padding:1rem;
+    width:80%;
+    height:20%;
+}
+
+.footer .box-container .box #emailid{
+    width:70%;
+    height:10%;
+    margin: .7rem 0;
+    padding:1rem;
+    border-radius: .5rem;
+    background: #dfdcdc;
+    font-size: 1.6rem;
+    color:var(--black);
+    text-transform: none;
+
+}
+.footer-copy-right {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #101010;
+    padding-top: 10px;
+    color:var(--black);
+    font-size: 1rem;
+}
+
+
+
+
+
+/* footer css */
