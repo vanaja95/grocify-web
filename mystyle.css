@@ -108,7 +108,7 @@ section{
     }
     /* General Header Styling */
     .header-2 {
-        background: #fff;
+        background: #ffffff;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -131,17 +131,17 @@ section{
         font-size: 2.5rem;
         border-radius: .5rem;
         padding: .8rem 1.5rem;
-        color: var(--black);
+        color:var(--black);
         cursor: pointer;
         display: none; /* Hidden by default (will show on mobile screens) */
-        margin: 1rem 0;
-        background: #6f9dfa;
+       
+       
         border: none; /* Removed incorrect border property */
     }
 
     /* Menu Bar Icon Toggle (X icon when active) */
     #menu-bar.fa-times {
-        color: var(--black);
+        color:var(--black);
     }
 
     /* Navbar Styling for Large Screens */
@@ -176,15 +176,15 @@ section{
         .navbar {
             display: none;
             flex-direction: column;
-            background-color: #8b8686;
+            background-color: #ace6f3;
             position: fixed;
             top: 0;
-            left: -150px; /* Hide offscreen to the left */
-            width: 150px;
-            height: 20%;
+            left: -250px; /* Hide offscreen to the left */
+            width: 250px;
+            height: 650%;
             padding-top: 1px;
             transition: 0.3s ease; /* Smooth transition */
-            z-index: 1000;
+          
         }
 
         .navbar.active {
@@ -196,7 +196,7 @@ section{
             font-size: 2rem;
             
             text-align: left;
-            color: #fff;
+            color:var(--black);
         }
     }
 
@@ -1622,7 +1622,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 170vh;
+    height: 120vh;
     margin: 100px auto;
     padding: 40px;
    
@@ -2034,7 +2034,10 @@ footer {
 
 
 /* footer css */
-
+#location-display{
+    margin-top: 20px; 
+    font-weight: bold;
+}
 
 
 
@@ -2074,14 +2077,14 @@ footer {
      .navbar{
         position:absolute;
         top:100%;left:0;right:0;
-        padding: 25rem;
+        padding: 2rem;
         display: none;
         flex-direction:column;
        
     }
      .navbar .active{
         display: flex; /* Show navbar when active */
-        gap: 20px;
+        gap: 10px;
 
     }
     #menu-bar .fa-ties{
@@ -2091,7 +2094,7 @@ footer {
         font-size: 2.5rem;
         display:block;
         text-align: center;
-        background: #a7a6a6;
+       
         padding:1rem;
         margin:1rem 0;
        

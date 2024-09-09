@@ -627,10 +627,7 @@ function logout() {
 
 
 // Function to handle the click event on the contact boxes
-// Function to handle the click event on the contact boxes
-function openphone() {
-    alert("This feature is currently unavailable.");
-  }
+
   
   // Function to handle form submission
   document.querySelector('.btn').addEventListener('click', function(e) {
@@ -656,24 +653,8 @@ function openphone() {
 
 
 
-// footer js code
+// footer subscrib js code
 
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('.sub-button').addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent form submission
-
-        const emailInput = document.getElementById('footer-emailid').value;
-
-        if (!emailInput) {
-            alert("Please enter an email address.");
-            return;
-        }
-
-        console.log("Button clicked. Email:", emailInput); // Debugging
-
-        // Here, you can proceed with further processing or file download
-    });
-});
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.sub-button').addEventListener('click', function(event) {
@@ -715,3 +696,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+//email id link
+
+document.getElementById("emailLink").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent the default mailto action for now
+
+    // Perform any additional actions here (e.g., tracking, form validation, etc.)
+    console.log("Email link clicked!");
+
+    // After the additional actions, trigger the mailto link
+    window.location.href = "mailto:info@example.com";
+});
+ 
+
+// location link
+
+document.getElementById("locationLink").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent the default action for now
+
+    // Perform any additional actions here (e.g., logging, analytics, etc.)
+    console.log("Location link clicked!");
+
+    // After additional actions, open the Google Maps location
+    window.open("https://www.google.com/maps/place/Bangalore,+Karnataka,+India", "_blank");
+});
