@@ -657,42 +657,41 @@ function logout() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM fully loaded and parsed'); // Check if DOM is loaded
+
     document.querySelector('.sub-button').addEventListener('click', function(event) {
         event.preventDefault(); // Prevent form submission
 
+        console.log('Subscribe button clicked'); // Check if click event is firing
+
         const emailInput = document.getElementById('footer-emailid').value;
+        console.log('Email input value:', emailInput); // Check if email is being read
 
         if (!emailInput) {
             alert("Please enter an email address.");
             return;
         }
 
-        // Prepare CSV content
-        const csvHeaders = "Email,Date\n";
-        const csvData = `${emailInput},${new Date().toLocaleString()}\n`;
-        const csvContent = csvHeaders + csvData;
+        // Display thank you message
+        const messageElement = document.getElementById('subscription-message');
+        if (messageElement) {
+            messageElement.textContent = "Thank you for subscribing!";
+            messageElement.style.display = 'block'; // Make message visible
 
-        // Create a Blob from the CSV content
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            // Log when timeout is set
+            console.log('Timeout set to hide message in 5 seconds.');
 
-        // Create a link element for download
-        const link = document.createElement("a");
-        const url = URL.createObjectURL(blob);
-        link.setAttribute("href", url);
-        link.setAttribute("download", "subscription.csv");
-
-        // Append the link to the body
-        document.body.appendChild(link);
-
-        // Programmatically trigger the click event
-        link.click();
-
-        // Clean up by removing the link
-        document.body.removeChild(link);
+            // Hide the message after 5 seconds (5000 milliseconds)
+            setTimeout(() => {
+                console.log('Hiding the message.');
+                messageElement.style.display = 'none';
+            }, 5000);
+        } else {
+            console.error('Message element not found');
+        }
 
         // Clear the input field
         document.getElementById('footer-emailid').value = '';
-        alert("Subscription successful! CSV file downloaded.");
     });
 });
 
@@ -720,3 +719,8 @@ document.getElementById("locationLink").addEventListener("click", function(event
     // After additional actions, open the Google Maps location
     window.open("https://www.google.com/maps/place/Bangalore,+Karnataka,+India", "_blank");
 });
+
+
+
+// contact js code
+
