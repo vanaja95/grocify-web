@@ -177,7 +177,7 @@ section{
             display: none;
             flex-direction: column;
             background-color: #ace6f3;
-            position: fixed;
+            position: auto;
             top: 0;
             left: -250px; /* Hide offscreen to the left */
             width: 250px;
@@ -199,6 +199,53 @@ section{
             color:var(--black);
         }
     }
+
+    /* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown button (Category link) */
+.dropbtn {
+    color:var(--black);
+    padding: 14px 20px;
+    text-decoration: none;
+    border: none;
+}
+
+.dropbtn:hover {
+    background-color:var(--black);
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color:#ace6f3;
+    min-width: 160px;
+    z-index: 1;
+}
+
+/* Dropdown content links */
+.dropdown-content a {
+    color:var(--black);
+    padding: 2px 15px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    padding-bottom:2px;
+    
+}
+
+.dropdown-content a:hover {
+    background-color:var(--green);
+}
+
+/* Show the dropdown content when hovering over the dropdown button */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
 
      #cart-count {
@@ -1410,6 +1457,115 @@ h2 {
     text-decoration: none;
     margin: 15px 0 10px;
   }
+
+  /* Media query for tablets and mobile screens (max-width: 768px) */
+@media (max-width: 768px) {
+    .account-page {
+        padding: 1rem 5%;
+        height: auto;
+    }
+
+    .container {
+        width: 100%;
+        min-height: 100%;
+        padding: 1rem;
+    }
+
+    .form-container {
+        flex-direction: column;
+    }
+
+    .sign-in,
+    .sign-up {
+        width: 100%;
+        position: static;
+        transform: translateX(0) !important;
+        z-index: 1 !important;
+        opacity: 1 !important;
+        animation: none;
+    }
+
+    .container.active .sign-in {
+        transform: translateX(0);
+    }
+
+    .toggle-container {
+        display: none;
+    }
+
+    .container.active .toggle-container {
+        display: none;
+    }
+
+    .forgot-password input {
+        width: 100%;
+    }
+
+    .container input {
+        width: 100%;
+    }
+
+    .container button {
+        width: 100%;
+    }
+
+    .forgot-password h1,
+    .sign-in h1,
+    .sign-up h1 {
+        font-size: 2rem;
+    }
+
+    .sign-in #forgot-password-link,
+    .forgot-password #back-to-sign-in {
+        font-size: 1.5rem;
+    }
+
+    .toggle {
+        display: none;
+    }
+
+    .social-icons {
+        flex-direction: column;
+    }
+
+    .social-icons a {
+        margin: 5px 0;
+    }
+
+    .forgot-password button {
+        width: 100%;
+    }
+}
+
+/* Media query for smaller mobile screens (max-width: 480px) */
+@media (max-width: 480px) {
+    .account-page {
+        padding: 1rem 3%;
+    }
+
+    .sign-in h1,
+    .sign-up h1,
+    .forgot-password h1 {
+        font-size: 1.8rem;
+       
+    }
+
+    .container input {
+        padding: 8px;
+    }
+
+    .forgot-password span,
+    .sign-in span,
+    .sign-up span {
+        font-size: 1rem;
+    }
+
+    .container button {
+        padding: 8px 30px;
+        font-size: 14px;
+    }
+}
+
   
 /* account page login and register page ends csss*/
 
@@ -1797,14 +1953,14 @@ main {
   
   #contact-form .name,
   #contact-form .email{
-    padding: 10px;
+    padding: 5px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
   }
   #contact-form .message{
-    padding: 10px;
+    padding: 5px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;

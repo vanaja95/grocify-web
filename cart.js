@@ -629,28 +629,32 @@ function logout() {
 // Function to handle the click event on the contact boxes
 
   
-  // Function to handle form submission
-  document.querySelector('.btn').addEventListener('click', function(e) {
-    e.preventDefault(); // Prevent the form from submitting
-  
-    // Get the form values
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-  
-    // Simple validation to check if all fields are filled
-    if (name === "" || email === "" || message === "") {
-      alert("Please fill in all fields.");
-    } else {
-      // Perform form submission logic here, such as sending the data to a server
-      alert("Message sent! We'll get back to you shortly.");
-  
-      // Reset the form after submission
-      document.getElementById('contact-form').reset();
+document.querySelector('.btn').addEventListener('click', function() {
+    // Get form values
+    const name = document.querySelector('.name').value.trim();
+    const email = document.querySelector('.email').value.trim();
+    const message = document.querySelector('.message').value.trim();
+    
+    // Basic validation
+    if (!name || !email || !message) {
+        alert('Please fill in all fields.');
+        return;
     }
-  });
-  
 
+    if (!validateEmail(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+
+    // Simulate form submission
+    alert('Form submitted successfully, shortly we will get back to you!');
+       
+});
+
+function validateEmail(email) {
+    const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(String(email).toLowerCase());
+}
 
 
 // footer subscrib js code
