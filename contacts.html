@@ -113,15 +113,27 @@
             </div>
         
 
-        <form id="contact-form">
-            <input type="text" class="name" placeholder="your Name">
-            <input type="email" class="email" placeholder="your Email">
-            <input type="text" class="message" placeholder="your message">
-
-        </form>
-    
-            <input type="button"value="submit"  class="btn">
-        </div>
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <!-- Access Key -->
+                <input type="hidden" name="access_key" value="cab390fb-923a-4fb9-862c-6dae01430222">
+                
+                <input type="text" name="name" class="name" placeholder="Your Name" required>
+                <input type="email" name="email" class="email" placeholder="Your Email" required>
+                <input type="text" name="message" class="message" placeholder="Your Message" required>
+                
+                <!-- Honeypot Spam Protection -->
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                <div>
+                     <!-- Submit Button -->
+                    <input type="submit" value="Submit" class="btn">
+                </div>
+               
+                
+            </form>
+            
+            <!-- Result Div to Show Success/Failure Messages -->
+            <div id="result"></div>
+            
           
      
     </main>
@@ -183,6 +195,6 @@
 
 
     <!-- Link to JavaScript file -->
-    <script src="cart.js"></script>
+    <script src="contact.js"></script>
 </body>
 </html>

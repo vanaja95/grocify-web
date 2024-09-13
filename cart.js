@@ -23,21 +23,37 @@ document.addEventListener('click', (event) => {
 //searchbar js  
 document.addEventListener('DOMContentLoaded', () => {
     const searchBox = document.getElementById("search-box");
+    const searchIcon = document.querySelector(".header-1 .search-box-container label");
 
-    searchBox.addEventListener("input", () => {
+    const performSearch = () => {
         const searchQuery = searchBox.value.toLowerCase();
         const productBoxes = document.querySelectorAll(".box");
+        let isProductFound = false;
 
         productBoxes.forEach(box => {
             const productName = box.querySelector("h3").textContent.toLowerCase();
-            
+
             if (productName.includes(searchQuery)) {
                 box.style.display = "block"; // Show product
+                isProductFound = true;
             } else {
                 box.style.display = "none"; // Hide product
             }
-            
         });
+
+        // If no product is found, show an alert
+        if (!isProductFound && searchQuery !== '') {
+            alert("Product not found");
+        }
+    };
+
+    // Trigger search when typing in the search box
+   // searchBox.addEventListener("input", performSearch);
+
+    // Trigger search when clicking the search icon
+    searchIcon.addEventListener("click", () => {
+        searchBox.focus(); // Focus on the search box to show text cursor
+        performSearch(); // Perform search
     });
 });
 
@@ -626,35 +642,38 @@ function logout() {
 //contact section javascript start
 
 
-// Function to handle the click event on the contact boxes
-
-  
-document.querySelector('.btn').addEventListener('click', function() {
-    // Get form values
-    const name = document.querySelector('.name').value.trim();
-    const email = document.querySelector('.email').value.trim();
-    const message = document.querySelector('.message').value.trim();
+// document.getElementById('contact-form').addEventListener('submit', function(event) {
+//     event.preventDefault(); // Prevent default form submission
     
-    // Basic validation
-    if (!name || !email || !message) {
-        alert('Please fill in all fields.');
-        return;
-    }
+//     const form = event.target;
+//     const formData = new FormData(form); // Collect form data
+    
+//     // Add debugging statement
+//     console.log("Form is being submitted...");
 
-    if (!validateEmail(email)) {
-        alert('Please enter a valid email address.');
-        return;
-    }
+//     fetch(form.action, {
+//         method: form.method,
+//         body: formData,
+//         headers: {
+//             'Accept': 'application/json'
+//         }
+//     }).then(response => response.json()).then(result => {
+//         console.log("Response received:", result); // Debugging: Log the result
+//         if (result.success) {
+//             document.getElementById('result').textContent = "Thank you! Your message has been sent successfully.";
+//             form.reset(); // Reset the form after successful submission
+//         } else {
+//             document.getElementById('result').textContent = "Oops! Something went wrong. Please try again.";
+//         }
+//     }).catch(error => {
+//         console.log("Error occurred:", error); // Debugging: Log the error
+//         document.getElementById('result').textContent = "Oops! There was an error submitting the form.";
+//     });
+// });
 
-    // Simulate form submission
-    alert('Form submitted successfully, shortly we will get back to you!');
-       
-});
 
-function validateEmail(email) {
-    const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return re.test(String(email).toLowerCase());
-}
+
+
 
 
 // footer subscrib js code
@@ -726,5 +745,4 @@ document.getElementById("locationLink").addEventListener("click", function(event
 
 
 
-// contact js code
 
