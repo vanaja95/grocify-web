@@ -1943,16 +1943,16 @@ main {
   #contact-form {
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
+    margin-top:10px;
     text-align: center;
-    padding:.5rem 20%;
+    padding:.5rem 15%;
    
   }
   
   #contact-form .name,
   #contact-form .email{
-    padding: 5px;
-    margin-bottom: 15px;
+    padding: 10px;
+    margin-bottom: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
@@ -2172,6 +2172,12 @@ footer {
     color: var(--black);
     margin: 0.7rem 0;
     box-sizing: border-box; /* Ensure padding is included in width calculation */
+}
+span{
+    color:black;
+    font-size:2rem;
+    margin-top:10px;
+    display:block;
 }
 
 /* Footer Copyright */

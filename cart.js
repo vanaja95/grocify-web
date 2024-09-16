@@ -527,49 +527,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // }
 
 
+// order js 
 
 
 
-//order js
-
-document.addEventListener('DOMContentLoaded', () => {
-    fetchOrders();
-});
-
-function fetchOrders() {
-    fetch('/orders')
-        .then(response => response.json())
-        .then(data => {
-            const ordersContainer = document.getElementById('ordersContainer');
-            if (data.length === 0) {
-                ordersContainer.innerHTML = '<p>No orders found.</p>';
-            } else {
-                data.forEach(order => {
-                    const orderElement = document.createElement('div');
-                    orderElement.className = 'order';
-                    orderElement.innerHTML = `
-                        <h2>Order #${order.id}</h2>
-                        <p>Date: ${order.date}</p>
-                        <p>Total: $${order.total.toFixed(2)}</p>
-                        <h3>Items:</h3>
-                        <ul>
-                            ${order.items.map(item => `<li>${item.name} (x${item.quantity}) - $${item.price.toFixed(2)}</li>`).join('')}
-                        </ul>
-                    `;
-                    ordersContainer.appendChild(orderElement);
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            document.getElementById('ordersContainer').innerHTML = '<p>An error occurred. Please try again later.</p>';
-        });
-}
-
-function logout() {
-    alert('Logged out successfully!');
-    window.location.href = 'login.html'; // Redirect to login page
-}
 
 
 
@@ -679,44 +640,22 @@ function logout() {
 // footer subscrib js code
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM fully loaded and parsed'); // Check if DOM is loaded
+const scriptURL = 'https://script.google.com/macros/s/AKfycbz3GFwtttBmYhevhNFAc4lqoWvBcsOH0wf7l5zaPp8mtYxvK4ie7ZvalleEgD1yL7_t/exec'
+const form = document.forms['submit-to-google-sheet']
+const msg = document.getElementById("msg")
 
-    document.querySelector('.sub-button').addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent form submission
-
-        console.log('Subscribe button clicked'); // Check if click event is firing
-
-        const emailInput = document.getElementById('footer-emailid').value;
-        console.log('Email input value:', emailInput); // Check if email is being read
-
-        if (!emailInput) {
-            alert("Please enter an email address.");
-            return;
-        }
-
-        // Display thank you message
-        const messageElement = document.getElementById('subscription-message');
-        if (messageElement) {
-            messageElement.textContent = "Thank you for subscribing!";
-            messageElement.style.display = 'block'; // Make message visible
-
-            // Log when timeout is set
-            console.log('Timeout set to hide message in 5 seconds.');
-
-            // Hide the message after 5 seconds (5000 milliseconds)
-            setTimeout(() => {
-                console.log('Hiding the message.');
-                messageElement.style.display = 'none';
-            }, 5000);
-        } else {
-            console.error('Message element not found');
-        }
-
-        // Clear the input field
-        document.getElementById('footer-emailid').value = '';
-    });
-});
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response =>{
+        msg.innerHTML = "Thank You For Subscribing!"
+        setTimeout(function(){
+                msg.innerHTML = ""
+        },5000)
+        form.reset()
+    })
+    .catch(error => console.error('Error!', error.message))
+})
 
 //email id link
 
