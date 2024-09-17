@@ -410,6 +410,74 @@ document.addEventListener('DOMContentLoaded', () => {
     loadCart();
 });
 
+// when click the buynow botton it will got order page
+document.addEventListener('DOMContentLoaded', () => {
+    const cartButton = document.querySelector('.buttons');
+    
+    cartButton.addEventListener('click', () => {
+        // Get cart items from the cart container
+        const cartItems = document.querySelectorAll('.cart-contant .cart-item');
+        const cartData = [];
+        
+        cartItems.forEach(item => {
+            const image = item.querySelector('.cart-column.image img').src;
+            const name = item.querySelector('.cart-column.item').textContent;
+            const price = item.querySelector('.cart-column.price').textContent;
+            const quantity = item.querySelector('.cart-column.quantity input').value;
+            const total = item.querySelector('.cart-column.tlt').textContent;
+            
+            cartData.push({ image, name, price, quantity, total });
+        });
+
+        // Save cart data to localStorage
+        localStorage.setItem('cartData', JSON.stringify(cartData));
+
+        // Redirect to the order page
+        window.location.href = 'orders.html';
+    });
+});
+
+
+
+// order js code
+
+document.addEventListener('DOMContentLoaded', () => {
+    const orderContainer = document.getElementById('order-container');
+
+    // Retrieve cart data from localStorage
+    const cartData = JSON.parse(localStorage.getItem('cartData')) || [];
+
+    if (cartData.length === 0) {
+        orderContainer.innerHTML = '<p>Your cart is empty.</p>';
+        return;
+    }
+
+    let orderHTML = `
+        <div class="order-header">
+            <div class="order-column image">Image</div>
+            <div class="order-column item">Product</div>
+            <div class="order-column price">Price</div>
+            <div class="order-column quantity">Quantity</div>
+            <div class="order-column total">Total</div>
+        </div>
+    `;
+
+    cartData.forEach(item => {
+        orderHTML += `
+            <div class="order-item">
+                <div class="order-column image"><img src="${item.image}" alt="${item.name}"></div>
+                <div class="order-column item">${item.name}</div>
+                <div class="order-column price">${item.price}</div>
+                <div class="order-column quantity">${item.quantity}</div>
+                <div class="order-column total">${item.total}</div>
+            </div>
+        `;
+    });
+
+    orderContainer.innerHTML = orderHTML;
+});
+
+
 
 
 

@@ -3,35 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orders</title>
-    <link rel="stylesheet" href="mystyle.css">
+    <title>Grocify website</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
    
-    <!--font awesome cdn link-->
+     <!--font awesome cdn link-->
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+   
+     <!--custom css file link-->
+     <link rel="stylesheet" href="mystyle.css">
+
 </head>
 <body>
+    
+    <!--header section start-->
+    <header class="header">
+        <div class ="header-1">
 
-
-
-    <header>
-        <div class="order-navbar">
-            <div class="logo">Grocify</div>
-            <div class="user-options">
-                <a href="index.html">Home</a>
-            
-                <a href="index.html" onclick="logout()">Logout</a>
-            </div>
+            <a href="#" class="logo"><i class="fas fa-shopping-basket"></i>Grocify</a>
+    
+            <form action="" class="search-box-container">
+                <input type="search" id="search-box"placeholder="search here......"  >
+                <label for="search-box"class="fas fa-search"></label>
+               
+                
+            </form>
         </div>
+                <div class="header-2">
+                   
+                    <div id="menu-bar"class="fas fa-bars"></div>
+
+
+                    <nav class="navbar">
+                        <a href="index.html">Home</a>
+                        <a href="product.html">Product</a>
+                        <div class="dropdown">
+                            <a href="category.html" class="dropbtn">Category ▾</a>
+                            <div class="dropdown-content">
+                                <a href="fruit.html#our-product">Fruits</a>
+                                <a href="vegitable.html#our-product">vegitables</a>
+                                <a href="meat.html#our-product">Meat</a>
+                                <a href="spices-flours.html#our-product">spices & flours</a>
+                                <a href="snacks.html#our-product">snacks items</a>
+                                <a href="shampoos-lotion.html#our-product">shampoos & lotions</a>
+                            </div>
+                        </div>
+                        <a href="orders.html">Orders</a>
+                        <a href="contacts.html">Contact</a>
+                       
+                    </nav>
+                    <div class="icons">
+                        <span id="cart-count">0</span>
+                        <a href="cart.html" class="fas fa-shopping-cart"></a>
+                        <a href="wishlist.html" class="fa fa-heart"></a>
+                        <a href="profile.html" class="fas fa-user"></a>
+                        <a href="signin.html">login</a>
+                    </div>
+                </div>
+            </div>
     </header>
-    <main>
-        <section class="orders-list">
-            <h1>Your Orders</h1>
-            <div id="ordersContainer"></div>
-        </section>
-    </main>
+
+
+    <div class="order-container">
+        <h1>Your Orders</h1>
+        
+        <table class="order-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="order-product">
+                            <img src="image1/alphonso-mango1.jpg" alt="Mangos" class="order-product-image">
+                            <span class="order-product-name">Mangos</span>
+                        </div>
+                    </td>
+                    <td><input type="number" min="1" max="1000" value="1" class="order-quantity"></td>
+                    <td>₹100.40</td>
+                    <td>₹100.40</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="order-product">
+                            <img src="image1/download (1).jfif" alt="Plum" class="order-product-image">
+                            <span class="order-product-name">Plum</span>
+                        </div>
+                    </td>
+                    <td><input type="number" min="1" max="1000" value="1" class="order-quantity"></td>
+                    <td>₹120.10</td>
+                    <td>₹120.10</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="order-product">
+                            <img src="image1/download (2).jfif" alt="Cucumber" class="order-product-image">
+                            <span class="order-product-name">Cucumber</span>
+                        </div>
+                    </td>
+                    <td><input type="number" min="1" max="1000" value="1" class="order-quantity"></td>
+                    <td>₹35.20</td>
+                    <td>₹35.20</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="order-summary">
+            <div class="order-summary-item">
+                <span>Subtotal:</span>
+                <span>₹255.70</span>
+            </div>
+            <div class="order-summary-item">
+                <span>Tax (5%):</span>
+                <span>₹12.78</span>
+            </div>
+            <div class="order-summary-item">
+                <span>Total:</span>
+                <span>₹268.48</span>
+            </div>
+            <button class="order-button">Place Order</button>
+        </div>
+    </div>
+
+
+
+
+
 
 
 
