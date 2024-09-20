@@ -417,10 +417,10 @@ section{
         color:var(--black);
      }
 
-.product{
-    flex: 1 1 40rem;
-   
-}
+    .product{
+        flex: 1 1 40rem;
+    
+    }
 
 
 
@@ -774,7 +774,7 @@ section{
     margin-left: 5.5rem;
 }
 
-.buttons {
+.buy-now-button  {
     display: block;
     padding: 2rem;
     width: 30%;
@@ -786,7 +786,7 @@ section{
     cursor: pointer;
 }
 
-.buttons:hover {
+.buy-now-button :hover {
     background-color: var(--black);
 }
 
@@ -875,10 +875,11 @@ section{
         margin-left: 0;
     }
 
-    .buttons {
+    .buy-now-button {
         width: 100%;
         font-size: 16px;
         padding: 10px;
+        
     }
 }
 
@@ -929,7 +930,7 @@ section{
         font-size: 1.2rem;
     }
 
-    .buttons {
+    .buy-now-button {
         width: 100%;
         font-size: 14px;
     }
@@ -1769,88 +1770,123 @@ h2 {
 
 
 
-/* Profile page css starts */
+
+
+/* Profile Page Styles */
 
 
 .profile-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+}
+
+.profile-picture {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.change-pic-btn {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: var(--green);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.change-pic-btn:hover {
+    background-color: var(--black);
+}
+
+
+.profile-header {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color:var(--black);
+}
+
+.profile-picture {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 120vh;
-    margin: 100px auto;
-    padding: 40px;
-   
-}
-
-.profile-card {
-    background-color: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
-    max-width: 700px;
-    width: 100%;
-    text-align: center;
-}
-
-.profile-card h2 {
     margin-bottom: 20px;
-    font-size: 40px;
-    font-weight: 700;
-    color:var(--black);
+    position: relative;
 }
 
-#profile-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.profile-picture img {
+    width: 100px;
+    height: 100px;
+    border-radius: 20%;
+    object-fit: cover;
+    border: 2px solid #ddd;
 }
 
-#profile-form label {
-    text-align: left;
-    font-weight: 500;
-    color:var(--black);
-    font-size: 2.5rem;
-}
-
-#profile-form input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 15px;
-    width: 100%;
-}
-
-.save-button
- {
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-weight: 1000;
+.file-upload {
+    position: absolute;
+    bottom: 0;
+    right: 25%;
+    opacity: 0;
     cursor: pointer;
-    margin-top: 15px;
-    text-decoration: none;
-    display: inline-block;
-    transition: all 0.3s ease;
+    width: 30px;
+    height: 30px;
 }
 
-.save-button {
-    background-color:var(--green);
-    color: white;
-    border: none;
-    font-size: 3rem;
+.form-group {
+    margin-bottom: 15px;
 }
 
-
-
-.save-button:hover {
-    background-color:var(--black);
-}
-/* Error message styling */
-.error-message {
-    color: red;
-    font-size: 15px;
-    margin-top: 4px;
+.form-group label {
     display: block;
-    align-items:right;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--green);
+}
+
+.save-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color:var(--green);
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.save-btn:hover {
+    background-color: var(--black);
 }
 
 
@@ -2028,7 +2064,9 @@ main {
 
 .order-container h1 {
     text-align: center;
-    color: #333;
+    color:var(--black);
+    padding:5rem;
+    font-size:4rem;
 }
 
 .order-table {
@@ -2041,11 +2079,14 @@ main {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    font-size: 2rem;
+    color:var(--black)
 }
 
 .order-product {
     display: flex;
     align-items: center;
+    
 }
 
 .order-product-image {
@@ -2056,11 +2097,15 @@ main {
 
 .order-product-name {
     font-weight: bold;
+    color:var(--black)
 }
 
 .order-quantity {
     width: 80px;
     text-align: center;
+    border: 1px solid var(--light-color);
+    outline-color: var(--light-color);
+    
 }
 
 .order-summary {
@@ -2107,6 +2152,102 @@ main {
     flex: 1;
     text-align: center;
 }
+
+
+
+
+
+/* payment css  */
+
+
+.pcontainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:55px;
+ 
+  
+}
+
+.pcontainer form{
+  padding:20px;
+  width:1000px;
+  min-height:100px;
+  height: 700px;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(50, 50, 50, 0.8);
+}
+
+.pcontainer form .row{
+  display: flex;
+  flex-wrap: wrap;
+  gap:120px;
+}
+
+.pcontainer form .row .col{
+  flex:1 1 250px;
+}
+
+.pcontainer form .row .col .title{
+  font-size: 20px;
+  color:#333;
+  padding-top: 20px;
+  padding-bottom: 35px;
+  text-transform: uppercase;
+}
+
+.pcontainer form .row .col .inputBox{
+  margin:15px 0;
+}
+
+.pcontainer form .row .col .inputBox span{
+  margin-bottom: 10px;
+  display: block;
+}
+
+.pcontainer form .row .col .inputBox input{
+  width: 100%;
+  border:1px solid #ccc;
+  padding:10px 15px;
+  font-size: 15px;
+  text-transform: none;
+}
+
+.pcontainer form .row .col .inputBox input:focus{
+  border:1px solid #000;
+}
+
+.pcontainer form .row .col .flex{
+  display: flex;
+  gap:15px;
+}
+
+.pcontainer form .row .col .flex .inputBox{
+  margin-top: 5px;
+}
+
+.pcontainer form .row .col .inputBox img{
+  height: 34px;
+  margin-top: 5px;
+  filter: drop-shadow(0 0 1px #000);
+}
+
+.pcontainer form .submit-btn{
+  width: 100%;
+  padding:12px;
+  font-size: 17px;
+  background: var(--green);
+  color:#fff;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.pcontainer form .submit-btn:hover{
+  background: var(--black);
+}
+
+
+
 
 
 
