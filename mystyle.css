@@ -614,10 +614,9 @@ section{
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-    border: 1px solid var(--light-color);
-    outline-color: var(--light-color);
+   
 
+   
 
 }
 
@@ -784,9 +783,10 @@ section{
     border: none;
     font-size: 18px;
     cursor: pointer;
+    border-radius: .5rem;
 }
 
-.buy-now-button :hover {
+.buy-now-button:hover {
     background-color: var(--black);
 }
 
@@ -1898,90 +1898,126 @@ h2 {
 
 
 /* General styles for the contact section */
+.contact {
+    background: url(image1/con4.jpg) no-repeat center center ;
+    width:100%;
+    height: 80vh;
+    background-size:cover;
+    flex-direction: column;
+    padding:50px 100px;
+}
 main {
-    font-family: Arial, sans-serif;
     padding: 10px;
     max-width: 1000px;
     margin: 0 auto;
+   
   }
-  
+ 
   .contact-header h2 {
     text-align: center;
     margin-bottom: 8px;
-    font-size: 22px;
+    font-size: 32px;
     color:var(--black);
   }
+
+  
   #subscription-message{
     color:green; 
     font-weight: bold;
     display:none;
 
   }
-  
+
   /* Contact container and boxes */
-  .contact-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
+ 
+  .contact-con{
+    width:100%;
+    display :flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
   }
-  .contact-sending{
-    background-color: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 1 1px 2px rgba(0, 0, 0, 0.8);
-    max-width: 1000px;
-    width: 100%;
-    text-align: center;
+  
+  .contact-container {
+    width:50%;
+    display: flex;
+    flex-direction: column;
     
   }
+ 
   
   .contact-box  {
-    flex: 1;
-    min-width: 250px;
-    background-color: #f1f1f1;
-    border-radius: 8px;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    position:relative;
+    padding: 20px 0;
+    display: flex;
+  
   }
   
-  .contact-box:hover {
-    background-color: #e2e2e2;
-  }
-  .contact-boxs h2{
-    font-size: 30px;
-    text-align: center;
-  }
   
   /* Icons in the contact boxes */
+  .contant-icons{
+    min-width:60px;
+    height: 60px;
+    background: #fff;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    border-radius:50%;
+    font-size: 22px;
+    
+  }
   .contant-icons i {
-    font-size: 40px;
+   
     color:var(--green);
-    margin-bottom: 10px;
+  
   }
   
   /* Title and content inside the contact boxes */
-  .contact-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
+  
+  .contact-content {
+    display: flex;
+    margin-left:20px;
+    color:#000000;
+    font-size:16px;
+    flex-direction: column;
+    font-weight: 600;
+
+  }
+  .contact-content h3{
+    font-weight: 700;
+    color:var(--black);
+
+  }
+  .contact-content a{
+   font-weight: 600;
+    color:#000000;
+
+  }
+  .contact-content a:hover{
     color:var(--black);
   }
-  
-  .cantact-contant {
-    font-size: 16px;
-    color:var(--light-color);
+  .contact-sending{
+    background: white;
+    padding: 10px;
+    width: 60%;
+    border-radius: 20px;
+    
   }
   
+  
+  .contact-boxs h2{
+    font-size: 30px;
+    color:var(--black);
+    text-align: center;
+    
+  }
   /* Styles for the form */
   #contact-form {
     display: flex;
     flex-direction: column;
-    margin-top:10px;
+    margin-top:2px;
     text-align: center;
-    padding:.5rem 15%;
+    padding:1rem 15%;
    
   }
   
@@ -2005,13 +2041,118 @@ main {
 
   
   /* Media query for responsiveness */
-  @media (max-width: 768px) {
-    .contact-container {
-      flex-direction: column;
-      align-items: center;
-    }
+ /* Media query for tablet and mobile devices */
+@media (max-width: 768px) {
+  .contact {
+    padding: 20px;
+    height: auto; /* Adjust height for better fit on smaller screens */
   }
-  
+
+  .contact-header h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .contact-con {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .contact-container {
+    width: 90%; /* Expand container width to fit smaller screens */
+    padding: 10px;
+  }
+
+  .contact-box {
+    flex-direction: row;
+    padding: 15px 0;
+  }
+
+  .contant-icons {
+    min-width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .contact-content {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+
+  .contact-content h3 {
+    font-size: 16px;
+  }
+
+  #contact-form {
+    padding: 1rem 5%;
+    text-align: center;
+  }
+
+  #contact-form .name,
+  #contact-form .email {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  #contact-form .message {
+    padding: 8px;
+    height: 100px; /* Adjust height for better input area on smaller screens */
+    font-size: 14px;
+  }
+
+  .contact-sending {
+    width: 80%; /* Adjust form width to fit smaller screens */
+    padding: 10px;
+    border-radius: 15px;
+  }
+}
+
+/* Media query specifically for mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .contact {
+    padding: 10px;
+  }
+
+  .contact-header h2 {
+    font-size: 20px;
+  }
+
+  .contact-container {
+    width: 100%; /* Full width on mobile */
+    padding: 0;
+  }
+
+  .contant-icons {
+    min-width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .contact-content {
+    font-size: 12px;
+  }
+
+  .contact-content h3 {
+    font-size: 14px;
+  }
+
+  #contact-form {
+    padding: 1rem 2%;
+  }
+
+  #contact-form .name,
+  #contact-form .email,
+  #contact-form .message {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .contact-sending {
+    width: 100%; /* Make form width 100% for mobile */
+    border-radius: 10px;
+  }
+}
+
 
 
 /*contact page css code ends*/

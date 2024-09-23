@@ -58,53 +58,53 @@ backToSignInLink.addEventListener('click', (e) => {
 
 
 
-// Handle Sign Up Form Submission
-document.getElementById("signUpForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+// // Handle Sign Up Form Submission
+// document.getElementById("signUpForm").addEventListener("submit", function(e) {
+//     e.preventDefault();
 
-    const name = document.getElementById("signUpName").value;
-    const email = document.getElementById("signUpEmail").value;
-    const password = document.getElementById("signUpPassword").value;
+//     const name = document.getElementById("signUpName").value;
+//     const email = document.getElementById("signUpEmail").value;
+//     const password = document.getElementById("signUpPassword").value;
 
-    fetch("http://localhost:9091/api/register", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ name, email, password })
-    })
-    .then(response => {
-        if (response.ok) {
-            alert("Registration successful!");
-            window.location.href = "signin.html"; // Redirect to the login page
-        } else {
-            alert("Registration failed!");
-        }
-    })
-    .catch(error => console.error("Error:", error));
-});
+//     fetch("http://localhost:9091/api/register", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify({ name, email, password })
+//     })
+//     .then(response => {
+//         if (response.ok) {
+//             alert("Registration successful!");
+//             window.location.href = "signin.html"; // Redirect to the login page
+//         } else {
+//             alert("Registration failed!");
+//         }
+//     })
+//     .catch(error => console.error("Error:", error));
+// });
 
-// Handle Sign In Form Submission
-document.getElementById("signInForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+// // Handle Sign In Form Submission
+// document.getElementById("signInForm").addEventListener("submit", function(e) {
+//     e.preventDefault();
 
-    const email = document.getElementById("signInEmail").value;
-    const password = document.getElementById("signInPassword").value;
+//     const email = document.getElementById("signInEmail").value;
+//     const password = document.getElementById("signInPassword").value;
 
-    fetch("http://localhost:9091/api/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email, password })
-    })
-    .then(response => {
-        if (response.ok) {
-            alert("Login successful!");
-            window.location.href = "index.html"; // Redirect to the home page
-        } else {
-            alert("Login failed!");
-        }
-    })
-    .catch(error => console.error("Error:", error));
-});
+//     fetch("http://localhost:9091/api/login", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify({ email, password })
+//     })
+//     .then(response => {
+//         if (response.ok) {
+//             alert("Login successful!");
+//             window.location.href = "index.html"; // Redirect to the home page
+//         } else {
+//             alert("Login failed!");
+//         }
+//     })
+//     .catch(error => console.error("Error:", error));
+// });

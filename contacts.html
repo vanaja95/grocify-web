@@ -72,64 +72,73 @@
      
 
      <!--contact section starts-->
+<section class="contact">
+ 
 
-     <main>
+    <main>
         <div class="contact-header">
             <h2>Contact us</h2>
         </div>
+  <div class="contact-con">
+      
 
-        <div class="contact-container">
-            <div class="contact-box"onclick="openphone()">
-                <div class="contant-icons">
-                    <i class="fas fa-mobile-alt"></i>
-                  
-                </div>
-                <div class="contact-title">phone number</div>
-                <div class="cantact-contant">+91 +91 9837654321</div>
-                <div class="cantact-contant">+91 +91 9837654322</div>
-            </div>
-         <div class="contact-box"onclick="openphone()">
-               <div class="contant-icons">
-                <i class="fas fa-envelope-square"></i>
-                </div>
-                    <div class="contact-title">email</div>
-                    <div>
-                        <a href="mailto:info@example.com" id="emailLink" class="cantact-contant" >info@example.com</a></div>
-         </div>
-            <div class="contact-box"onclick="openphone()">
-                <div class="contant-icons">
-                    <i class="fas fa-map-marker-alt"></i>
-                 </div>
-                     <div class="contact-title">address</div>
-                     <div> 
-                        <a href="https://www.google.com/maps/place/Bangalore,+Karnataka,+India"   class="cantact-contant"target="_blank" id="locationLink">Bangalore, India</a>
-                     </div>
-            </div>
+    <div class="contact-container">
+        <div class="contact-box"onclick="openphone()">
+            <div class="contant-icons">
+                <i class="fas fa-mobile-alt"></i>
+          </div>
+         <div class="contact-content">
+           <h3>phone number</h3>
+            <p>+91 +91 9837654321 <br>+91 +91 9837654322</p>
+           </div>
         </div>
-
-        <div class="contact-sending">
-            <div class="contact-boxs">
-                <h2>for queries</h2>
+     <div class="contact-box"onclick="openphone()">
+           <div class="contant-icons">
+            <i class="fas fa-envelope-square"></i>
             </div>
-        
-
-            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-                <!-- Access Key -->
-                <input type="hidden" name="access_key" value="cab390fb-923a-4fb9-862c-6dae01430222">
-                
-                <input type="text" name="name" class="name" placeholder="Your Name" required>
-                <input type="email" name="email" class="email" placeholder="Your Email" required>
-                <input type="text" name="message" class="message" placeholder="Your Message" required>
-                
-                <!-- Honeypot Spam Protection -->
-                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                <div>
-                     <!-- Submit Button -->
-                    <input type="submit" value="Submit" class="btn">
+                <div class="contact-content">
+                    <h3>email</h3>
+                   <a href="mailto:info@example.com" id="emailLink" >info@example.com</a>
                 </div>
-               
+     </div>
+        <div class="contact-box"onclick="openphone()">
+            <div class="contant-icons">
+                <i class="fas fa-map-marker-alt"></i>
+             </div>
+             <div class="contact-content">
+                <h3>address</h3>
                 
-            </form>
+                    <a href="https://www.google.com/maps/place/Bangalore,+Karnataka,+India"target="_blank" id="locationLink">Bangalore, India</a>
+                 </div>
+        </div>
+    </div>
+
+    <div class="contact-sending"> 
+        <div class="contact-boxs">
+            <h2>for queries</h2>
+        </div>
+    
+
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <!-- Access Key -->
+            <input type="hidden" name="access_key" value="cab390fb-923a-4fb9-862c-6dae01430222">
+            
+            <input type="text" name="name" class="name" placeholder="Your Name" required>
+            <input type="email" name="email" class="email" placeholder="Your Email" required>
+            <input type="text" name="message" class="message" placeholder="Your Message" required>
+            
+            <!-- Honeypot Spam Protection -->
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+            <div>
+                 <!-- Submit Button -->
+                <input type="submit" value="Submit" class="btn">
+            </div>
+           
+            
+        </form>
+    
+  </div>
+        
             
             <!-- Result Div to Show Success/Failure Messages -->
             <div id="result"></div>
@@ -139,6 +148,8 @@
     </main>
 
 
+</section>
+   
 
     
 
