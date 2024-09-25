@@ -69,6 +69,62 @@
 
      <!--header section ends-->
 
+    <!--login section starts-->
+    <section class="login-section hidden" id="login-section">
+        <div class="auth-wrapper">
+            <div class="form-box">
+                <h2 id="formTitle">Login</h2>
+                
+                <!-- Login Form -->
+                <form id="loginForm" class="form">
+                    <div class="input-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Login</button>
+                    <p class="forgot-link" onclick="showForgotPassword()">Forgot Password?</p>
+                    <p class="toggle-link">Don't have an account? <span onclick="showRegister()">Register</span></p>
+                </form>
+    
+                <!-- Register Form -->
+                <form id="registerForm" class="form hidden">
+                    <div class="input-group">
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="Confirm Password" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Register</button>
+                    <p class="toggle-link">Already have an account? <span onclick="showLogin()">Login</span></p>
+                </form>
+    
+                <!-- Forgot Password Form -->
+                <form id="forgotPasswordForm" class="form hidden">
+                    <div class="input-group">
+                        <input type="email" placeholder="Enter your email to reset password" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit</button>
+                    <p class="toggle-link">Remembered your password? <span onclick="showLogin()">Login</span></p>
+                </form>
+            </div>
+        </div>
+    </section>
+   
+
+
+
+
+
+ <!--login section ends-->
+
 
   
     <!--home section starts-->
@@ -212,13 +268,13 @@
                         <input type="number" min="1" max="1000" class="cart-quantity" value="1">
                         <span>/kg</span>
                     </div>
-                    <a href="#" class="btn">Add to Cart</a>
+                    <a href="#" class="btn add-to-cart-btn">Add to Cart</a>
                 </div>
         
                 <div class="box" id="product-2">
                     <span class="discount">-35%</span>
                     <div class="icon">
-                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-heart wishlist-btn"></a>
                         <a href="#" class="fas fa-share"></a>
                         <a href="#" class="fas fa-eye"></a>
                     </div>
@@ -230,7 +286,7 @@
                         <input type="number" min="1" max="1000" class="cart-quantity" value="1">
                         <span>/kg</span>
                     </div>
-                    <a href="#" class="btn">Add to Cart</a>
+                    <a href="#" class="btn add-to-cart-btn">Add to Cart</a>
                 </div>
 
                 <div class="box" id="product-3">

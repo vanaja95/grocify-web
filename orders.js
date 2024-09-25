@@ -1,11 +1,12 @@
 // Initialize wishlist and cart
 let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let orders = JSON.parse(localStorage.getItem('orders')) || [];
 
 // Function to load and display wishlist items
 function loadWishlist() {
     let wishlistContainer = document.querySelector('.wishlist-items');
-    
+
     if (!wishlistContainer) return;
 
     wishlistContainer.innerHTML = '';
@@ -74,7 +75,7 @@ function addToWishlist(productId) {
 function updateWishlistCount() {
     let wishlistCount = wishlist.length;
     let wishlistCountElement = document.getElementById('wishlist-count');
-    
+
     if (wishlistCountElement) {
         wishlistCountElement.innerText = wishlistCount;
     } else {
@@ -98,14 +99,14 @@ function showWishlistNotification() {
 function attachWishlistEventListeners() {
     let removeButtons = document.querySelectorAll('.wishlist-remove');
     let addToCartButtons = document.querySelectorAll('.add-to-cart-button');
-    
+
     removeButtons.forEach(button => {
         button.addEventListener('click', () => {
             let index = button.getAttribute('data-index');
             removeItemFromWishlist(index);
         });
     });
-    
+
     addToCartButtons.forEach(button => {
         button.addEventListener('click', () => {
             let index = button.getAttribute('data-index');
@@ -122,7 +123,6 @@ function addToCartFromWishlist(index) {
         return;
     }
 
-    // Get the quantity from the wishlist item
     let quantityInput = document.querySelector(`.wishlist-quantity[data-index="${index}"]`);
     let quantity = parseInt(quantityInput.value) || 1;
 
@@ -143,7 +143,7 @@ function addToCartFromWishlist(index) {
 function updateCartCount() {
     let cartCount = cart.reduce((total, item) => total + item.quantity, 0);
     let cartCountElement = document.getElementById('cart-count');
-    
+
     if (cartCountElement) {
         cartCountElement.innerText = cartCount;
     } else {
@@ -163,7 +163,7 @@ function loadCart() {
     } else {
         cart.forEach((item, index) => {
             cartContainer.innerHTML += `
-              <div class="cart-box">
+                <div class="cart-box">
                     <div class="cart-remove" data-index="${index}"><i class="fa fa-trash"></i></div>
                     <div><img src="${item.imgSrc}" alt="${item.title}" class="product-img"></div>
                     <div class="cart-product-title">${item.title}</div>
@@ -187,7 +187,7 @@ function updateTotal() {
         let price = parseFloat(item.price.replace('₹', ''));
         return sum + (price * item.quantity);
     }, 0);
-   
+
     document.querySelector('.total-price').innerText = `Grand Total: ₹${total.toFixed(2)}`;
 }
 
@@ -221,7 +221,6 @@ function updateCartItemPrice(index) {
     const itemPrice = parseFloat(item.price.replace('₹', ''));
     const itemTotal = itemPrice * item.quantity;
 
-    // Find the corresponding cart item element and update its price
     const cartItemElement = document.querySelector(`.cart-box:nth-child(${parseInt(index) + 1}) .cart-total`);
     if (cartItemElement) {
         cartItemElement.innerText = `₹${itemTotal.toFixed(2)}`;
@@ -240,115 +239,88 @@ function attachCartEventListeners() {
     document.querySelectorAll('.cart-quantity').forEach(input => {
         input.addEventListener('change', quantityChanged);
     });
+
+    document.querySelector('.buy-now-button').addEventListener('click', transferToOrderPage);
 }
 
-// Function to show notification after adding to cart
-function showNotification() {
-    alert("Your product has been added to the cart!");
+// Function to transfer items to the order page
+function transferToOrderPage() {
+    // Transfer items from the cart to the order array
+    orders = [...cart];
+    localStorage.setItem('orders', JSON.stringify(orders));
+    cart = [];
+    localStorage.setItem('cart', JSON.stringify(cart));
+    loadCart();
+    alert('Items have been transferred to your orders.');
+    window.location.href = 'orders.html'; // Redirect to the order page
+}
 
-    var notification = document.getElementById("cart-notification");
-    if (notification) {
-        notification.className = "notification show";
+// Function to load orders on the order page
+function loadOrders() {
+    let orderContainer = document.querySelector('.order-table tbody');
+    if (!orderContainer) return;
 
-        setTimeout(() => {
-            notification.className = notification.className.replace("show", "");
-        }, 3000);
+    orderContainer.innerHTML = '';
+
+    if (orders.length === 0) {
+        orderContainer.innerHTML = '<tr><td colspan="4">No orders placed yet.</td></tr>';
+    } else {
+        let subtotal = 0;
+        orders.forEach((item) => {
+            const itemPrice = parseFloat(item.price.replace('₹', ''));
+            const itemTotal = itemPrice * item.quantity;
+            subtotal += itemTotal;
+
+            orderContainer.innerHTML += `
+                <tr>
+                    <td>${item.title}</td>
+                    <td>${item.quantity}</td>
+                    <td>₹${item.price}</td>
+                    <td>₹${itemTotal.toFixed(2)}</td>
+                </tr>
+            `;
+        });
+
+        const tax = subtotal * 0.05;
+        const total = subtotal + tax;
+
+        document.querySelector('.order-summary-item:nth-child(1) span:nth-child(2)').innerText = `₹${subtotal.toFixed(2)}`;
+        document.querySelector('.order-summary-item:nth-child(2) span:nth-child(2)').innerText = `₹${tax.toFixed(2)}`;
+        document.querySelector('.order-summary-item:nth-child(3) span:nth-child(2)').innerText = `₹${total.toFixed(2)}`;
     }
 }
 
-// Function to handle "Buy Now" button click
-function buyNow() {
-    // Save the current cart items to local storage under the key 'orderItems'
-    localStorage.setItem('orderItems', JSON.stringify(cart));
-    
-    // Clear the cart and update local storage
-    cart = [];
-    localStorage.setItem('cart', JSON.stringify(cart));
-    
-    // Optionally navigate to the order page
-    window.location.href = 'orders.html'; // Adjust the path as necessary
-}
-
-// Attach the buy now button event listener
+// Load initial data when the document is ready
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.box .fa-cart-plus').forEach(button => {
-        button.addEventListener('click', () => {
-            let productId = button.getAttribute('data-product-id');
+    document.querySelectorAll('.box .fa-heart').forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+            let productId = button.closest('.box').id;
+            addToWishlist(productId);
+        });
+    });
+
+    document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+            let productId = button.closest('.box').id;
             addToCart(productId);
         });
     });
 
-    document.querySelectorAll('.buy-now-button').forEach(button => {
-        button.addEventListener('click', buyNow);
-    });
-
-    // Load wishlist and cart on page load
+    updateWishlistCount();
     loadWishlist();
+    updateCartCount();
     loadCart();
+    loadOrders();
 });
 
 
 
 
 
-
-// Function to load and display order items
-function loadOrder() {
-    let orderContainer = document.querySelector('.order-items');
-    if (!orderContainer) return;
-
-    let orderItems = JSON.parse(localStorage.getItem('orderItems')) || [];
-    if (orderItems.length === 0) {
-        orderContainer.innerHTML = '<p>Your order is empty.</p>';
-    } else {
-        orderContainer.innerHTML = '';
-
-        orderItems.forEach((item, index) => {
-            orderContainer.innerHTML += `
-                <div class="order-box">
-                    <div class="order-column image">
-                        <img src="${item.imgSrc}" alt="${item.title}" class="product-img">
-                    </div>
-                    <div class="order-column item">${item.title}</div>
-                    <div class="order-column price">${item.price}</div>
-                    <div class="order-column quantity">${item.quantity}</div>
-                    <div class="order-column total">₹${(parseFloat(item.price.replace('₹', '')) * item.quantity).toFixed(2)}</div>
-                </div>
-            `;
-        });
-
-        updateOrderTotal(orderItems);
-    }
-}
-
-// Function to update the total price
-function updateOrderTotal(items) {
-    let total = items.reduce((sum, item) => {
-        let price = parseFloat(item.price.replace('₹', ''));
-        return sum + (price * item.quantity);
-    }, 0);
-
-    document.querySelector('.order-total').innerText = `Total: ₹${total.toFixed(2)}`;
-}
-
-// Function to finalize the order
-function finalizeOrder() {
-    // Implement your order finalization logic here
-
-    // Clear the order items from local storage
-    localStorage.removeItem('orderItems');
-
-    // Show a confirmation message or redirect the user
-    alert('Thank you for your order!');
-    window.location.href = 'index.html'; // Redirect to the home page or another page
-}
-
-// Attach event listener to the finalize order button
-document.addEventListener('DOMContentLoaded', () => {
-    loadOrder();
-
-    let finalizeButton = document.querySelector('.finalize-order-button');
-    if (finalizeButton) {
-        finalizeButton.addEventListener('click', finalizeOrder);
-    }
+// Add event listener to the "Place Order" button
+document.getElementById('placeOrderButton').addEventListener('click', function() {
+    // Redirect to the payment page when the button is clicked
+    window.location.href = 'payment.html'; // Replace 'payment-page.html' with the actual payment page URL
 });

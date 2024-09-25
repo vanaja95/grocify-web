@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Initialize wishlist and cart
 let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let orders = JSON.parse(localStorage.getItem('orders')) || [];
 
 // Function to load and display wishlist items
 function loadWishlist() {
@@ -327,7 +328,55 @@ function attachCartEventListeners() {
     document.querySelectorAll('.cart-quantity').forEach(input => {
         input.addEventListener('change', quantityChanged);
     });
+    document.querySelector('.buy-now-button').addEventListener('click', transferToOrderPage);
 }
+// Function to transfer items to the order page
+function transferToOrderPage() {
+    // Transfer items from the cart to the order array
+    orders = [...cart];
+    localStorage.setItem('orders', JSON.stringify(orders));
+    cart = [];
+    localStorage.setItem('cart', JSON.stringify(cart));
+    loadCart();
+    alert('Items have been transferred to your orders.');
+    window.location.href = 'orders.html'; // Redirect to the order page
+}
+
+// Function to load orders on the order page
+function loadOrders() {
+    let orderContainer = document.querySelector('.order-table tbody');
+    if (!orderContainer) return;
+
+    orderContainer.innerHTML = '';
+
+    if (orders.length === 0) {
+        orderContainer.innerHTML = '<tr><td colspan="4">No orders placed yet.</td></tr>';
+    } else {
+        let subtotal = 0;
+        orders.forEach((item) => {
+            const itemPrice = parseFloat(item.price.replace('₹', ''));
+            const itemTotal = itemPrice * item.quantity;
+            subtotal += itemTotal;
+
+            orderContainer.innerHTML += `
+                <tr>
+                    <td>${item.title}</td>
+                    <td>${item.quantity}</td>
+                    <td>₹${item.price}</td>
+                    <td>₹${itemTotal.toFixed(2)}</td>
+                </tr>
+            `;
+        });
+
+        const tax = subtotal * 0.05;
+        const total = subtotal + tax;
+
+        document.querySelector('.order-summary-item:nth-child(1) span:nth-child(2)').innerText = `₹${subtotal.toFixed(2)}`;
+        document.querySelector('.order-summary-item:nth-child(2) span:nth-child(2)').innerText = `₹${tax.toFixed(2)}`;
+        document.querySelector('.order-summary-item:nth-child(3) span:nth-child(2)').innerText = `₹${total.toFixed(2)}`;
+    }
+}
+
 
 // Function to show notification after adding to cart
 function showNotification() {
@@ -408,197 +457,94 @@ document.addEventListener('DOMContentLoaded', () => {
     loadWishlist();
     updateCartCount();
     loadCart();
+    loadOrders();
 });
 
-// when click the buynow botton it will got order page
-document.addEventListener('DOMContentLoaded', () => {
-    const cartButton = document.querySelector('.buttons');
-    
-    cartButton.addEventListener('click', () => {
-        // Get cart items from the cart container
-        const cartItems = document.querySelectorAll('.cart-contant .cart-item');
-        const cartData = [];
-        
-        cartItems.forEach(item => {
-            const image = item.querySelector('.cart-column.image img').src;
-            const name = item.querySelector('.cart-column.item').textContent;
-            const price = item.querySelector('.cart-column.price').textContent;
-            const quantity = item.querySelector('.cart-column.quantity input').value;
-            const total = item.querySelector('.cart-column.tlt').textContent;
-            
-            cartData.push({ image, name, price, quantity, total });
-        });
 
-        // Save cart data to localStorage
-        localStorage.setItem('cartData', JSON.stringify(cartData));
+// Add event listener to the "Place Order" button
+document.getElementById('placeOrderButton').addEventListener('click', function() {
+    // Redirect to the payment page when the button is clicked
+    window.location.href = 'payment.html'; // Replace 'payment-page.html' with the actual payment page URL
+});
 
-        // Redirect to the order page
-        window.location.href = 'orders.html';
+
+
+
+
+// login section js code
+
+// Toggle between forms
+function showLogin() {
+    document.getElementById('formTitle').innerText = 'Login';
+    document.getElementById('loginForm').classList.remove('hidden');
+    document.getElementById('registerForm').classList.add('hidden');
+    document.getElementById('forgotPasswordForm').classList.add('hidden');
+}
+
+function showRegister() {
+    document.getElementById('formTitle').innerText = 'Register';
+    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('registerForm').classList.remove('hidden');
+    document.getElementById('forgotPasswordForm').classList.add('hidden');
+}
+
+function showForgotPassword() {
+    document.getElementById('formTitle').innerText = 'Forgot Password';
+    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('registerForm').classList.add('hidden');
+    document.getElementById('forgotPasswordForm').classList.remove('hidden');
+}
+
+// Simulating a user login state (false = not logged in)
+let isLoggedIn = false;
+
+// Get elements for login section, cart buttons, and wishlist buttons
+const loginSection = document.getElementById('login-section');
+const cartButtons = document.querySelectorAll('.add-to-cart-btn');
+const wishlistButtons = document.querySelectorAll('.wishlist-btn');
+
+// Function to show the login form
+function showLoginForm() {
+    loginSection.classList.remove('hidden');  // Show login section
+    window.scrollTo(0, 0);  // Scroll to the top of the page
+}
+
+// Function to hide the login form after login
+function hideLoginForm() {
+    loginSection.classList.add('hidden');  // Hide login section
+    isLoggedIn = true;  // Set logged in state to true after successful login
+}
+
+// Attach click events to "Add to Cart" buttons
+cartButtons.forEach(button => {
+    button.addEventListener('click', function (e) {
+        e.preventDefault();  // Prevent default anchor behavior
+        if (!isLoggedIn) {
+            showLoginForm();  // Show login form if not logged in
+        } else {
+            alert('Item added to cart');  // Add to cart logic (if logged in)
+        }
     });
 });
 
-
-
-// order js code
-
-document.addEventListener('DOMContentLoaded', () => {
-    const orderContainer = document.getElementById('order-container');
-
-    // Retrieve cart data from localStorage
-    const cartData = JSON.parse(localStorage.getItem('cartData')) || [];
-
-    if (cartData.length === 0) {
-        orderContainer.innerHTML = '<p>Your cart is empty.</p>';
-        return;
-    }
-
-    let orderHTML = `
-        <div class="order-header">
-            <div class="order-column image">Image</div>
-            <div class="order-column item">Product</div>
-            <div class="order-column price">Price</div>
-            <div class="order-column quantity">Quantity</div>
-            <div class="order-column total">Total</div>
-        </div>
-    `;
-
-    cartData.forEach(item => {
-        orderHTML += `
-            <div class="order-item">
-                <div class="order-column image"><img src="${item.image}" alt="${item.name}"></div>
-                <div class="order-column item">${item.name}</div>
-                <div class="order-column price">${item.price}</div>
-                <div class="order-column quantity">${item.quantity}</div>
-                <div class="order-column total">${item.total}</div>
-            </div>
-        `;
+// Attach click events to "Wishlist" buttons
+wishlistButtons.forEach(button => {
+    button.addEventListener('click', function (e) {
+        e.preventDefault();  // Prevent default anchor behavior
+        if (!isLoggedIn) {
+            showLoginForm();  // Show login form if not logged in
+        } else {
+            alert('Item added to wishlist');  // Add to wishlist logic (if logged in)
+        }
     });
-
-    orderContainer.innerHTML = orderHTML;
 });
 
-
-
-
-
-// //profile  js 
-
-// document.getElementById("profile-form").addEventListener("submit", function(event) {
-//     event.preventDefault(); // Prevent the form from submitting the default way
-
-//     // Clear all previous error messages
-//     clearErrorMessages();
-
-//     // Get form input values
-//     const name = document.getElementById("name").value.trim();
-//     const email = document.getElementById("email").value.trim();
-//     const phone = document.getElementById("phone").value.trim();
-//     const password = document.getElementById("password").value.trim();
-//     const address = document.getElementById("address").value.trim();
-//     const location = document.getElementById("location").value.trim();
-
-//     let isValid = true; // Flag to check form validity
-
-//     // Validate Name
-//     if (!name) {
-//         showError("name-error", "Please enter your name.");
-//         isValid = false;
-//     }
-
-//     // Validate Email
-//     if (!email || !validateEmail(email)) {
-//         showError("email-error", "Please enter a valid email address.");
-//         isValid = false;
-//     }
-
-//     // Validate Phone
-//     if (!phone || !validatePhone(phone)) {
-//         showError("phone-error", "Please enter a valid phone number.");
-//         isValid = false;
-//     }
-
-//     // Validate Password
-//     if (!password) {
-//         showError("password-error", "Please enter a password.");
-//         isValid = false;
-//     }
-
-//     // Validate Address
-//     if (!address) {
-//         showError("address-error", "Please enter your address.");
-//         isValid = false;
-//     }
-
-//     // Validate Location
-//     if (!location) {
-//         showError("location-error", "Please enter your location.");
-//         isValid = false;
-//     }
-
-//     // If the form is valid, submit the form or display a success message
-//     if (isValid) {
-//         // Handle form submission logic here
-//         // Example: Submit form via fetch API or display a success message
-//         alert("Profile updated successfully!");
-//     }
-
-//     // Optionally, you can send the form data to the backend using fetch API
-//     // Example:
-    
-//     fetch("http://localhost:9091/api/register", {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify({
-//             name: name,
-//             email: email,
-//             phone: phone,
-//             password: password,
-//             address: address,
-//             location: location
-//         })
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//         console.log("Success:", data);
-//         // Handle successful update
-//     })
-//     .catch((error) => {
-//         console.error("Error:", error);
-//         // Handle errors
-//     });
-
-// });
-
-// // Function to show error messages
-// function showError(elementId, message) {
-//     document.getElementById(elementId).textContent = message;
-// }
-
-// // Function to clear all error messages
-// function clearErrorMessages() {
-//     const errorElements = document.querySelectorAll(".error-message");
-//     errorElements.forEach(element => element.textContent = "");
-// }
-
-// // Helper function to validate email
-// function validateEmail(email) {
-//     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//     return re.test(email);
-// }
-
-// // Helper function to validate phone number (basic validation)
-// function validatePhone(phone) {
-//     const re = /^[0-9]{10}$/; // Validates a 10-digit phone number
-//     return re.test(phone);
-// }
-
-
-// order js 
-
-
-
+// Handle login form submission (simulated)
+document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();  // Prevent default form submission
+    hideLoginForm();  // Simulate successful login
+    alert('Login successful! Now you can add items to the cart and wishlist.');
+});
 
 
 

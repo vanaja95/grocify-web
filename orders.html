@@ -70,7 +70,6 @@
 
     <div class="order-container">
         <h1>Your Orders</h1>
-        
         <table class="order-table">
             <thead>
                 <tr>
@@ -80,8 +79,11 @@
                     <th>Total</th>
                 </tr>
             </thead>
-           </table>
-        
+            <tbody>
+                <!-- Order items will be dynamically loaded here -->
+            </tbody>
+        </table>
+    
         <div class="order-summary">
             <div class="order-summary-item">
                 <span>Subtotal:</span>
@@ -95,12 +97,10 @@
                 <span>Total:</span>
                 <span>₹0.00</span>
             </div>
-            <button class="order-button">Place Order</button>
+            <button class="order-button" id="placeOrderButton">Place Order</button>
         </div>
     </div>
-
-
-
+    
 
 
 
@@ -169,7 +169,7 @@
    
    
               <!--footer section ends-->
-              <script src="cart.js"></script>
+              <script src="orders.js"></script>
    
    
       
