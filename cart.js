@@ -472,79 +472,116 @@ document.getElementById('placeOrderButton').addEventListener('click', function()
 
 
 // login section js code
+document.addEventListener('DOMContentLoaded', function() {
+    let isLoggedIn = localStorage.getItem('isLoggedIn') === 'false';  // Simulating login state, initially false
 
-// Toggle between forms
-function showLogin() {
-    document.getElementById('formTitle').innerText = 'Login';
-    document.getElementById('loginForm').classList.remove('hidden');
-    document.getElementById('registerForm').classList.add('hidden');
-    document.getElementById('forgotPasswordForm').classList.add('hidden');
-}
+    // Get elements for login section and cart/wishlist buttons
+    const loginSection = document.getElementById('login-section');
+    const cartButtons = document.querySelectorAll('.add-to-cart-btn');
+    const wishlistButtons = document.querySelectorAll('.wishlist-btn');
 
-function showRegister() {
-    document.getElementById('formTitle').innerText = 'Register';
-    document.getElementById('loginForm').classList.add('hidden');
-    document.getElementById('registerForm').classList.remove('hidden');
-    document.getElementById('forgotPasswordForm').classList.add('hidden');
-}
+    // Function to show the login form
+    function showLoginForm() {
+        loginSection.classList.remove('hidden');  // Show login section
+        window.scrollTo(0, 0);  // Scroll to the top of the page to focus on the login
+    }
 
-function showForgotPassword() {
-    document.getElementById('formTitle').innerText = 'Forgot Password';
-    document.getElementById('loginForm').classList.add('hidden');
-    document.getElementById('registerForm').classList.add('hidden');
-    document.getElementById('forgotPasswordForm').classList.remove('hidden');
-}
+    // Function to hide the login form after login
+    function hideLoginForm() {
+        loginSection.classList.add('hidden');  // Hide login section
+        isLoggedIn = true;  // Simulate that the user is logged in
+    }
 
-// Simulating a user login state (false = not logged in)
-let isLoggedIn = false;
+    // Function to toggle between login and register form
+    function showLogin() {
+        document.getElementById('loginForm').classList.remove('hidden');
+        document.getElementById('registerForm').classList.add('hidden');
+        document.getElementById('forgotPasswordForm').classList.add('hidden');
+        document.getElementById('formTitle').innerText = 'Login';
+    }
 
-// Get elements for login section, cart buttons, and wishlist buttons
-const loginSection = document.getElementById('login-section');
-const cartButtons = document.querySelectorAll('.add-to-cart-btn');
-const wishlistButtons = document.querySelectorAll('.wishlist-btn');
+    function showRegister() {
+        document.getElementById('loginForm').classList.add('hidden');
+        document.getElementById('registerForm').classList.remove('hidden');
+        document.getElementById('forgotPasswordForm').classList.add('hidden');
+        document.getElementById('formTitle').innerText = 'Register';
+    }
 
-// Function to show the login form
-function showLoginForm() {
-    loginSection.classList.remove('hidden');  // Show login section
-    window.scrollTo(0, 0);  // Scroll to the top of the page
-}
+    function showForgotPassword() {
+        document.getElementById('loginForm').classList.add('hidden');
+        document.getElementById('registerForm').classList.add('hidden');
+        document.getElementById('forgotPasswordForm').classList.remove('hidden');
+        document.getElementById('formTitle').innerText = 'Forgot Password';
+    }
 
-// Function to hide the login form after login
-function hideLoginForm() {
-    loginSection.classList.add('hidden');  // Hide login section
-    isLoggedIn = true;  // Set logged in state to true after successful login
-}
+    function setupCartButtons() {
+        cartButtons.forEach(button => {
+            // Ensure this function is added only once
+            button.removeEventListener('click', handleAddToCart); // Remove any previous listeners
+            button.addEventListener('click', handleAddToCart);
+        });
+    }
 
-// Attach click events to "Add to Cart" buttons
-cartButtons.forEach(button => {
-    button.addEventListener('click', function (e) {
-        e.preventDefault();  // Prevent default anchor behavior
-        if (!isLoggedIn) {
-            showLoginForm();  // Show login form if not logged in
-        } else {
-            alert('Item added to cart');  // Add to cart logic (if logged in)
-        }
+    // Attach click events to Add to Cart buttons
+    cartButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+            let productId = button.closest('.box').id;
+            if (!isLoggedIn) {
+                showLoginForm();  // Show login form if not logged in
+            } else {
+                addToCart(productId);  // Call the existing addToCart function
+                alert('Item added to cart');
+            }
+        });
     });
-});
 
-// Attach click events to "Wishlist" buttons
-wishlistButtons.forEach(button => {
-    button.addEventListener('click', function (e) {
-        e.preventDefault();  // Prevent default anchor behavior
-        if (!isLoggedIn) {
-            showLoginForm();  // Show login form if not logged in
-        } else {
-            alert('Item added to wishlist');  // Add to wishlist logic (if logged in)
-        }
+    // Attach click events to Wishlist buttons
+    wishlistButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+            let productId = button.closest('.box').id;
+            if (!isLoggedIn) {
+                showLoginForm();  // Show login form if not logged in
+            } else {
+                addToWishlist(productId);  // Call the existing addToWishlist function
+                
+            }
+        });
     });
+
+    // Handle login form submission (simulated)
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        hideLoginForm();  // Simulate successful login
+        alert('Login successful! Now you can add items to the cart and wishlist.');
+    });
+
+    // Handle registration form submission (simulated)
+    document.getElementById('registerForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Registration successful! Please login now.');
+        showLogin();  // Show login form after successful registration
+    });
+
+    // Handle forgot password form submission (simulated)
+    document.getElementById('forgotPasswordForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Password reset link sent to your email!');
+        showLogin();  // Show login form after successful password reset
+    });
+
+    // Expose the showRegister and showLogin functions globally to the onclick handlers in HTML
+    window.showRegister = showRegister;
+    window.showLogin = showLogin;
+    window.showForgotPassword = showForgotPassword;
+
+    if (isLoggedIn) {
+        loginSection.classList.add('hidden');
+    }
+    setupCartButtons();
 });
 
-// Handle login form submission (simulated)
-document.getElementById('loginForm').addEventListener('submit', function (e) {
-    e.preventDefault();  // Prevent default form submission
-    hideLoginForm();  // Simulate successful login
-    alert('Login successful! Now you can add items to the cart and wishlist.');
-});
 
 
 
@@ -698,4 +735,5 @@ document.getElementById("locationLink").addEventListener("click", function(event
 
 
 
+//payment section
 
