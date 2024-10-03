@@ -44,8 +44,8 @@
                         <div class="dropdown">
                             <a href="category.html" class="dropbtn">Category ▾</a>
                             <div class="dropdown-content">
-                                <a href="fruit.html#our-product">Fruits</a>
-                                <a href="vegitable.html#our-product">vegitables</a>
+                                <a href="fruit.html#our-product">Fruits </a>
+                                <a href="vegitable.html#our-product">vegitables </a>
                                 <a href="meat.html#our-product">Meat</a>
                                 <a href="spices-flours.html#our-product">spices & flours</a>
                                 <a href="snacks.html#our-product">snacks items</a>
@@ -57,10 +57,10 @@
                        
                     </nav>
                     <div class="icons">
-                        <span id="cart-count">0</span>
+                        <span id="cart-count"class="cart-badge">0</span>
                         <a href="cart.html" class="fas fa-shopping-cart"></a>
                         <a href="wishlist.html" class="fa fa-heart"></a>
-                        <a href="profile.html" class="fas fa-user"></a>
+                        <a href="profile.html" id="profile-icon" class="hidden"><i class="fas fa-user"></i></a>
                            
                         <!-- <div class="sub-menu-wrap">
                             <div class="sub-menu-user">
@@ -95,7 +95,9 @@
 
 
 
-                        <a href="signin.html">login</a>
+                        <a href="#" id="login-button">Login</a>
+                        <a href="#" id="logout-button" class="hidden" >Logout</a>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -107,10 +109,11 @@
     <section class="login-section hidden" id="login-section">
         <div class="auth-wrapper">
             <div class="form-box">
-                <h2 id="formTitle">Login</h2>
+                
                 
                 <!-- Login Form -->
                 <form id="loginForm" class="form">
+                    <h2 id="formTitle">Login</h2>
                     <div class="input-group">
                         <input type="email" placeholder="Email" required>
                     </div>
@@ -123,7 +126,9 @@
                 </form>
     
                 <!-- Register Form -->
+               
                 <form id="registerForm" class="form hidden">
+                    <h2 id="formTitle">Register</h2>
                     <div class="input-group">
                         <input type="text" placeholder="Full Name" required>
                     </div>
@@ -290,7 +295,7 @@
                 <div class="box" id="product-1">
                     <span class="discount">-35%</span>
                     <div class="icon">
-                        <a href="#" class="fas fa-heart wishlist-btn"></a>
+                        <a href="#" class="fas fa-heart add-to-wishlist"></a>
                         <a href="#" class="fas fa-share"></a>
                         <a href="#" class="fas fa-eye"></a>
                     </div>
@@ -302,13 +307,13 @@
                         <input type="number" min="1" max="1000" class="cart-quantity" value="1">
                         <span>/kg</span>
                     </div>
-                    <a href="#" class="btn add-to-cart-btn">Add to Cart</a>
+                    <a href="#" class="btn ">Add to Cart</a>
                 </div>
         
                 <div class="box" id="product-2">
                     <span class="discount">-35%</span>
                     <div class="icon">
-                        <a href="#" class="fas fa-heart wishlist-btn"></a>
+                        <a href="#" class="fas fa-heart "></a>
                         <a href="#" class="fas fa-share"></a>
                         <a href="#" class="fas fa-eye"></a>
                     </div>
@@ -320,13 +325,13 @@
                         <input type="number" min="1" max="1000" class="cart-quantity" value="1">
                         <span>/kg</span>
                     </div>
-                    <a href="#" class="btn add-to-cart-btn">Add to Cart</a>
+                    <a href="#" class="btn ">Add to Cart</a>
                 </div>
 
                 <div class="box" id="product-3">
                     <span class="discount">-35%</span>
                     <div class="icon">
-                        <a href="#" class="fas fa-heart wishlist-btn"></a>
+                        <a href="#" class="fas fa-heart "></a>
                         <a href="#" class="fas fa-share"></a>
                         <a href="#" class="fas fa-eye"></a>
                     </div>
@@ -338,7 +343,7 @@
                         <input type="number" min="1" max="1000" class="cart-quantity" value="1">
                         <span>/kg</span>
                     </div>
-                     <a href="#" class="btn add-to-cart-btn">Add to Cart</a>
+                     <a href="#" class="btn "id="addToCartButton">Add to Cart</a>
                 </div>
                 
                 <div class="box" id="product-4">

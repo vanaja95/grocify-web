@@ -28,3 +28,48 @@
         });
     });
 
+   // footer subscrib js code
+
+
+const scriptURL = 'https://script.google.com/macros/s/AKfycbz3GFwtttBmYhevhNFAc4lqoWvBcsOH0wf7l5zaPp8mtYxvK4ie7ZvalleEgD1yL7_t/exec'
+const form = document.forms['submit-to-google-sheet']
+const msg = document.getElementById("msg")
+
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response =>{
+        msg.innerHTML = "Thank You For Subscribing!"
+        setTimeout(function(){
+                msg.innerHTML = ""
+        },3000)
+        form.reset()
+    })
+    .catch(error => console.error('Error!', error.message))
+})
+
+//email id link
+
+document.getElementById("emailLink").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent the default mailto action for now
+
+    // Perform any additional actions here (e.g., tracking, form validation, etc.)
+    console.log("Email link clicked!");
+
+    // After the additional actions, trigger the mailto link
+    window.location.href = "mailto:info@example.com";
+});
+ 
+
+// location link
+
+document.getElementById("locationLink").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent the default action for now
+
+    // Perform any additional actions here (e.g., logging, analytics, etc.)
+    console.log("Location link clicked!");
+
+    // After additional actions, open the Google Maps location
+    window.open("https://www.google.com/maps/place/Bangalore,+Karnataka,+India", "_blank");
+});
+

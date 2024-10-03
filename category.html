@@ -59,14 +59,71 @@
                         <span id="cart-count">0</span>
                         <a href="cart.html" class="fas fa-shopping-cart"></a>
                         <a href="wishlist.html" class="fa fa-heart"></a>
-                        <a href="profile.html" class="fas fa-user"></a>
-                        <a href="signin.html">login</a>
+                        <a href="profile.html" id="profile-icon" class="hidden"><i class="fas fa-user"></i></a>
+                        <a href="#" id="login-button">Login</a>
+                        <a href="#" id="logout-button" class="hidden">Logout</a>
                     </div>
                 </div>
             </div>
     </header>
 
      <!--header section ends-->
+
+
+      <!--login section starts-->
+    <section class="login-section hidden" id="login-section">
+        <div class="auth-wrapper">
+            <div class="form-box">
+               
+                
+                <!-- Login Form -->
+                <form id="loginForm" class="form">
+                    <h2 id="formTitle">Login</h2>
+                    <div class="input-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Login</button>
+                    <p class="forgot-link" onclick="showForgotPassword()">Forgot Password?</p>
+                    <p class="toggle-link">Don't have an account? <span onclick="showRegister()">Register</span></p>
+                </form>
+    
+                <!-- Register Form -->
+                <form id="registerForm" class="form hidden">
+                    <h2 id="formTitle">Register</h2>
+                    <div class="input-group">
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="Confirm Password" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Register</button>
+                    <p class="toggle-link">Already have an account? <span onclick="showLogin()">Login</span></p>
+                </form>
+    
+                <!-- Forgot Password Form -->
+                <form id="forgotPasswordForm" class="form hidden">
+                    <div class="input-group">
+                        <input type="email" placeholder="Enter your email to reset password" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit</button>
+                    <p class="toggle-link">Remembered your password? <span onclick="showLogin()">Login</span></p>
+                </form>
+            </div>
+        </div>
+    </section>
+   
+
+
+
 
 
     <!--scrollup-icon-->
@@ -82,7 +139,7 @@
 
     <div class = "category-content">
         <span class="sn">Grocery Deliver service</span>
-        <h3>Make Healthy <br>Life With <span>Fresh </span><br>Grocery</h3>
+        <h3>Make Healthy <br>Life With  Fresh<br>Grocery</h3>
         <p>Get the best quality and most delicious grocery food in<br> the world, you can get them all use our website </p><br><br>
         <a href="product.html#our-product" class="button">shop now</a>
         
@@ -996,7 +1053,7 @@
 
 
               <!--footer section ends-->
-              <script src="cart.js"></script>
+              <script src="login.js"></script>
     
 </body>
 </html>

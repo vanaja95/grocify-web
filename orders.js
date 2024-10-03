@@ -250,7 +250,6 @@ function transferToOrderPage() {
     localStorage.setItem('orders', JSON.stringify(orders));
     cart = [];
     localStorage.setItem('cart', JSON.stringify(cart));
-    loadCart();
     alert('Items have been transferred to your orders.');
     window.location.href = 'orders.html'; // Redirect to the order page
 }
@@ -262,33 +261,64 @@ function loadOrders() {
 
     orderContainer.innerHTML = '';
 
+    // If no orders, show a message
     if (orders.length === 0) {
         orderContainer.innerHTML = '<tr><td colspan="4">No orders placed yet.</td></tr>';
+        updateSummary(0); // Update the summary with zero values
     } else {
         let subtotal = 0;
+
         orders.forEach((item) => {
             const itemPrice = parseFloat(item.price.replace('₹', ''));
             const itemTotal = itemPrice * item.quantity;
             subtotal += itemTotal;
 
+            // Add each order to the table
             orderContainer.innerHTML += `
                 <tr>
                     <td>${item.title}</td>
                     <td>${item.quantity}</td>
-                    <td>₹${item.price}</td>
+                    <td>${item.price}</td>
                     <td>₹${itemTotal.toFixed(2)}</td>
                 </tr>
             `;
         });
 
-        const tax = subtotal * 0.05;
-        const total = subtotal + tax;
-
-        document.querySelector('.order-summary-item:nth-child(1) span:nth-child(2)').innerText = `₹${subtotal.toFixed(2)}`;
-        document.querySelector('.order-summary-item:nth-child(2) span:nth-child(2)').innerText = `₹${tax.toFixed(2)}`;
-        document.querySelector('.order-summary-item:nth-child(3) span:nth-child(2)').innerText = `₹${total.toFixed(2)}`;
+        updateSummary(subtotal); // Update summary with subtotal
     }
 }
+
+// Function to update the order summary with tax, discount, and total
+function updateSummary(subtotal) {
+    const tax = subtotal * 0.05;
+    const discount = parseFloat(document.querySelector('#discount').innerText.replace('₹', '')) || 0;
+    const total = subtotal + tax - discount;
+
+    document.querySelector('#subtotal').innerText = `₹${subtotal.toFixed(2)}`;
+    document.querySelector('#tax').innerText = `₹${tax.toFixed(2)}`;
+    document.querySelector('#total').innerText = `₹${total.toFixed(2)}`;
+}
+
+// Promo code logic
+document.getElementById('apply-code').addEventListener('click', () => {
+    const promoCode = document.getElementById('promo-code').value;
+    const promoFeedback = document.getElementById('promo-feedback');
+
+    // Simple promo code check (you can expand this with an API or complex logic)
+    if (promoCode === 'DISCOUNT10') {
+        const subtotal = parseFloat(document.querySelector('#subtotal').innerText.replace('₹', ''));
+        const discount = subtotal * 0.1; // 10% discount
+        document.querySelector('#discount').innerText = `₹${discount.toFixed(2)}`;
+        promoFeedback.innerText = 'Promo code applied successfully!';
+        promoFeedback.style.color = 'green';
+    } else {
+        promoFeedback.innerText = 'Invalid promo code.';
+        promoFeedback.style.color = 'red';
+    }
+
+    const subtotal = parseFloat(document.querySelector('#subtotal').innerText.replace('₹', ''));
+    updateSummary(subtotal); // Recalculate total after applying discount
+});
 
 // Load initial data when the document is ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -319,8 +349,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
 // Add event listener to the "Place Order" button
 document.getElementById('placeOrderButton').addEventListener('click', function() {
     // Redirect to the payment page when the button is clicked
     window.location.href = 'payment.html'; // Replace 'payment-page.html' with the actual payment page URL
 });
+
+
+
+
+
+// Update cart count
+function updateCartCount() {
+    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+    const cartCountElement = document.getElementById('cart-count');
+    if (cartCountElement) {
+        cartCountElement.innerText = cartCount; // Update the count in the UI
+    }
+}
+

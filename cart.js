@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // cart and wishlist js code
 
 
+
 // Initialize wishlist and cart
 let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -226,10 +227,19 @@ function addToCartFromWishlist(index) {
 }
 
 // Function to update cart count
+// Function to update cart count
 function updateCartCount() {
-    let cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+    // Retrieve the cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Calculate the total number of items in the cart
+    let cartCount = cart.reduce((total, item) => {
+        let quantity = parseInt(item.quantity) || 0; // Ensure quantity is valid
+        return total + quantity;
+    }, 0);
+
+    // Update the cart count element
     let cartCountElement = document.getElementById('cart-count');
-    
     if (cartCountElement) {
         cartCountElement.innerText = cartCount;
     } else {
@@ -237,27 +247,52 @@ function updateCartCount() {
     }
 }
 
+
+
+
+// Load and display cart items on the cart page
 // Load and display cart items on the cart page
 function loadCart() {
-    let cartContainer = document.querySelector('.cart-contant');
-    if (!cartContainer) return;
+    // Retrieve the cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+    let cartContainer = document.querySelector('.cart-contant');
+    if (!cartContainer) {
+        console.error("Cart container not found");
+        return;
+    }
+
+    // Clear previous cart content
     cartContainer.innerHTML = '';
 
+    // Check if the cart is empty
     if (cart.length === 0) {
         cartContainer.innerHTML = '<p>Your cart is empty.</p>';
     } else {
+        // Loop through cart items and render them
         cart.forEach((item, index) => {
+            // Validate price, quantity, and imgSrc
+            let price = item.price && typeof item.price === 'string' ? item.price : '₹0';
+            let quantity = parseInt(item.quantity) || 1; // Default to 1 if invalid
+            let imgSrc = item.imgSrc ? item.imgSrc : 'default-image-url.jpg'; // Use a default image if imgSrc is missing
+
+            // Convert price to a number for calculations
+            let numericPrice = parseFloat(price.replace('₹', ''));
+            if (isNaN(numericPrice)) {
+                numericPrice = 0; // Fallback to 0 if price is invalid
+            }
+
+            // Render cart item HTML
             cartContainer.innerHTML += `
               <div class="cart-box">
                     <div class="cart-remove" data-index="${index}"><i class="fa fa-trash"></i></div>
-                    <div><img src="${item.imgSrc}" alt="${item.title}" class="product-img"></div>
+                    <div><img src="${imgSrc}" alt="${item.title}" class="product-img"></div>
                     <div class="cart-product-title">${item.title}</div>
-                    <div class="cart-price">${item.price}</div>
+                    <div class="cart-price">${price}</div>
                     <div>
-                        <input type="number" value="${item.quantity}" class="cart-quantity" data-index="${index}">
+                        <input type="number" value="${quantity}" class="cart-quantity" data-index="${index}">
                     </div>
-                    <div class="cart-total">₹${(parseFloat(item.price.replace('₹', '')) * item.quantity).toFixed(2)}</div>
+                    <div class="cart-total">₹${(numericPrice * quantity).toFixed(2)}</div>
                 </div>
             `;
         });
@@ -267,15 +302,27 @@ function loadCart() {
     attachCartEventListeners();
 }
 
+
+// Debugging Step: Load cart and print it to the console
+console.log("Cart loaded from localStorage:", JSON.parse(localStorage.getItem('cart')));
+
+
+// Function to update total price
 // Function to update total price
 function updateTotal() {
     let total = cart.reduce((sum, item) => {
-        let price = parseFloat(item.price.replace('₹', ''));
-        return sum + (price * item.quantity);
+        // Validate and parse the price
+        let price = item.price && typeof item.price === 'string' ? item.price : '₹0';
+        let numericPrice = parseFloat(price.replace('₹', ''));
+
+        if (isNaN(numericPrice)) {
+            numericPrice = 0; // Fallback to 0 if price is invalid
+        }
+
+        return sum + (numericPrice * item.quantity);
     }, 0);
-   
-    
-    document.querySelector('.total-price').innerText = `grand Total:₹${total.toFixed(2)}`;
+
+    document.querySelector('.total-price').innerText = `Grand Total: ₹${total.toFixed(2)}`;
 }
 
 // Function to remove item from cart
@@ -409,31 +456,54 @@ document.querySelector('.btn').addEventListener('click', function() {
     alert('Your cart has been cleared!');
 });
 // Add to cart from product page
+// Function to add an item to the cart
 function addToCart(productId) {
     let product = document.getElementById(productId);
     if (!product) {
-        console.log('Product not found: ' + productId);
+        console.error('Product not found: ' + productId);
         return;
     }
 
+    // Retrieve item details
     let title = product.querySelector('h3').innerText;
     let price = product.querySelector('.price').innerText;
-    let quantity = parseInt(product.querySelector('.cart-quantity').value) || 1;
-    let imgSrc = product.querySelector('img').src;
+    let imgSrc = product.querySelector('img') ? product.querySelector('img').src : ''; // Ensure imgSrc is not undefined
+    let quantityInput = product.querySelector('.cart-quantity');
+    let quantity = parseInt(quantityInput?.value) || 1; // Default to 1 if no quantity input found
 
-    let productObj = { title, price, quantity, imgSrc };
+    // Validate the quantity value
+    if (isNaN(quantity) || quantity <= 0) {
+        quantity = 1; // Default to 1 if invalid
+    }
 
+    let productObj = { title, price, imgSrc, quantity };
+
+    // Load the existing cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Check if the product already exists in the cart
     let existingProductIndex = cart.findIndex(item => item.title === productObj.title);
     if (existingProductIndex !== -1) {
+        // If it exists, update the quantity
         cart[existingProductIndex].quantity += productObj.quantity;
     } else {
+        // If it doesn't exist, add it to the cart
         cart.push(productObj);
     }
 
+    // Save the updated cart back to localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Debug: Check if the cart is being saved correctly
+    console.log('Cart after adding product:', JSON.parse(localStorage.getItem('cart')));
+
+    // Update cart count and show notification
     updateCartCount();
     showNotification();
 }
+
+
+
 
 // Event listeners for "Add to Wishlist" and "Add to Cart" buttons
 document.addEventListener('DOMContentLoaded', () => {
@@ -581,6 +651,33 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     setupCartButtons();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

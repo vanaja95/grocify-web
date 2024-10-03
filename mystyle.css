@@ -374,7 +374,7 @@ section{
     
     .auth-wrapper {
         background-color: white;
-        padding: 20px;
+        padding: 10px;
         border-radius: 10px;
         width: 100%;
         max-width: 400px;
@@ -399,7 +399,7 @@ h2 {
 .form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: px;
 }
 
 .input-group {
@@ -408,8 +408,8 @@ h2 {
 
 .input-group input {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+    padding:10px;
+    margin:10px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
@@ -437,33 +437,34 @@ h2 {
 
 .forgot-link, .toggle-link {
     text-align: center;
-    color: #777;
+    color: #000000;
     cursor: pointer;
-    font-size: 14px;
+    font-weight:1000%;
+    font-size: 15px;
+    padding:10px;
 }
 
 .forgot-link:hover, .toggle-link span:hover {
-    color: #333;
+    color: var(--black);
 }
-
+.toggle-link span{
+    font-size:25px;
+    text-align: center;
+    font-weight: 1000%;
+    color:var(--black);
+   
+}
 .hidden {
     display: none;
 }
+
+
 
 @media (max-width: 768px) {
     .auth-wrapper {
         padding: 0 20px;
     }
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -546,6 +547,7 @@ h2 {
     .product .btns:hover {
         background: var(--black);
         letter-spacing: .1rem;
+        color:#fff;
     }
     
     /* Additional styling for the 'More Fruits' button to float right */
@@ -842,6 +844,7 @@ h2 {
 }
 
 .cart-box {
+    
     display: grid;
     grid-template-columns: 130px 100px 2fr 1.5fr 1fr 1fr;
     align-items: center;
@@ -1045,8 +1048,8 @@ h2 {
     }
 
     .product-img {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
     }
 
     .cart-product-title {
@@ -1361,6 +1364,7 @@ h2 {
 
 /* account page logon and sinup page start css*/
 
+
 .account-page {
     display: flex;
     align-items: center;
@@ -1640,115 +1644,6 @@ h2 {
     text-decoration: none;
     margin: 15px 0 10px;
   }
-
-  /* Media query for tablets and mobile screens (max-width: 768px) */
-@media (max-width: 768px) {
-    .account-page {
-        padding: 1rem 5%;
-        height: auto;
-    }
-
-    .container {
-        width: 100%;
-        min-height: 100%;
-        padding: 1rem;
-    }
-
-    .form-container {
-        flex-direction: column;
-    }
-
-    .sign-in,
-    .sign-up {
-        width: 100%;
-        position: static;
-        transform: translateX(0) !important;
-        z-index: 1 !important;
-        opacity: 1 !important;
-        animation: none;
-    }
-
-    .container.active .sign-in {
-        transform: translateX(0);
-    }
-
-    .toggle-container {
-        display: none;
-    }
-
-    .container.active .toggle-container {
-        display: none;
-    }
-
-    .forgot-password input {
-        width: 100%;
-    }
-
-    .container input {
-        width: 100%;
-    }
-
-    .container button {
-        width: 100%;
-    }
-
-    .forgot-password h1,
-    .sign-in h1,
-    .sign-up h1 {
-        font-size: 2rem;
-    }
-
-    .sign-in #forgot-password-link,
-    .forgot-password #back-to-sign-in {
-        font-size: 1.5rem;
-    }
-
-    .toggle {
-        display: none;
-    }
-
-    .social-icons {
-        flex-direction: column;
-    }
-
-    .social-icons a {
-        margin: 5px 0;
-    }
-
-    .forgot-password button {
-        width: 100%;
-    }
-}
-
-/* Media query for smaller mobile screens (max-width: 480px) */
-@media (max-width: 480px) {
-    .account-page {
-        padding: 1rem 3%;
-    }
-
-    .sign-in h1,
-    .sign-up h1,
-    .forgot-password h1 {
-        font-size: 1.8rem;
-       
-    }
-
-    .container input {
-        padding: 8px;
-    }
-
-    .forgot-password span,
-    .sign-in span,
-    .sign-up span {
-        font-size: 1rem;
-    }
-
-    .container button {
-        padding: 8px 30px;
-        font-size: 14px;
-    }
-}
-
   
 /* account page login and register page ends csss*/
 
@@ -2084,13 +1979,15 @@ h2 {
 /* General styles for the contact section */
 .contact {
     background: url(image1/con4.jpg) no-repeat center center ;
+ 
     width:100%;
-    height: 80vh;
+    height: 110vh;
     background-size:cover;
     flex-direction: column;
     padding:50px 100px;
 }
 main {
+  
     padding: 10px;
     max-width: 1000px;
     margin: 0 auto;
@@ -2098,11 +1995,12 @@ main {
   }
  
   .contact-header h2 {
+ 
     text-align: center;
     margin-bottom: 8px;
     font-size: 32px;
     color:var(--black);
-    padding-bottom: 150px;
+    padding-bottom: 50px;
   }
 
   
@@ -2223,6 +2121,10 @@ main {
     font-size: 16px;
    padding-bottom: 80px;
   }
+  #result{
+    padding:10px;
+    font-size: 12px;
+  }
   
 
   
@@ -2236,7 +2138,7 @@ main {
 
   .contact-header h2 {
     font-size: 24px;
-    margin-bottom: 10px;
+   
   }
 
   .contact-con {
@@ -2246,7 +2148,7 @@ main {
 
   .contact-container {
     width: 90%; /* Expand container width to fit smaller screens */
-    padding: 10px;
+    
   }
 
   .contact-box {
@@ -2294,7 +2196,7 @@ main {
 }
 
 /* Media query specifically for mobile devices (max-width: 480px) */
-@media (max-width: 480px) {
+ @media (max-width: 480px) {
   .contact {
     padding: 10px;
   }
@@ -2379,106 +2281,138 @@ main {
 /* order css start*/
 
 
-
-.order-container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.order-container h1 {
+h1 {
     text-align: center;
     color:var(--black);
-    padding:5rem;
-    font-size:4rem;
+    padding:30px;
+    font-size:40px;
 }
 
-.order-table {
+.order-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    border-radius: 8px;
+}
+
+table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
 
-.order-table th, .order-table td {
-    padding: 10px;
+thead {
+    background-color: #b5f5f6;
+    color:var(--black);
+    font-size: 20px;
+}
+
+th, td {
+    padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-    font-size: 2rem;
-    color:var(--black)
 }
 
-.order-product {
-    display: flex;
-    align-items: center;
-    
-}
-
-.order-product-image {
-    width: 80px;
-    height: auto;
-    margin-right: 10px;
-}
-
-.order-product-name {
+th {
     font-weight: bold;
-    color:var(--black)
 }
 
-.order-quantity {
-    width: 80px;
-    text-align: center;
-    border: 1px solid var(--light-color);
-    outline-color: var(--light-color);
-    
+td {
+    font-size: 16px;
+    color: #333;
 }
 
-.order-summary {
-    margin-top: 20px;
+/* Promo code section styling */
+.promo-section {
+    margin-bottom: 20px;
     padding: 10px;
-    border-top: 1px solid #ddd;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+}
+
+.promo-section h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: var(--black);
+}
+
+.promo-section input[type="text"] {
+    padding: 10px;
+    width: 60%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.promo-section button {
+    padding: 10px 20px;
+    background-color: var(--green);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.promo-section button:hover {
+    background-color:var(--black);
+}
+
+.promo-section p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
+}
+
+/* Order summary styling */
+.order-summary {
+    padding: 15px;
+    background-color: #f4f4f9;
+    border-radius: 8px;
+    border: 1px solid #ddd;
 }
 
 .order-summary-item {
     display: flex;
     justify-content: space-between;
-    padding: 5px 0;
+    padding: 10px 0;
+    font-size: 18px;
+}
+
+.order-summary-item span:last-child {
+    font-weight: bold;
+}
+
+.order-summary-item span {
+    color: #333;
+}
+
+/* Total styling */
+.order-summary-item.total span:last-child {
+    color: #d32f2f;
+    font-size: 20px;
 }
 
 .order-button {
-    display: block;
     width: 100%;
-    padding: 10px;
-    background-color: #28a745;
-    color: #fff;
+    padding: 15px;
+    font-size: 18px;
+    background-color:var(--green);
+    color: white;
     border: none;
-    border-radius: 4px;
-    font-size: 16px;
+    border-radius: 6px;
     cursor: pointer;
-    text-align: center;
+    margin-top: 15px;
 }
 
 .order-button:hover {
-    background-color: #218838;
-}
-.order-cart-content {
-    display: flex;
-    flex-direction: column;
+    background-color:var(--black);
 }
 
-.order-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.order-column {
-    flex: 1;
-    text-align: center;
-}
 
 
 
