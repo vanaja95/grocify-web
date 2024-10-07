@@ -434,29 +434,27 @@ function handleLogout() {
     alert('You have logged out successfully!');
 }
 
-// // Function to handle add to cart
-//function addToCart() {
-    // if (!isLoggedIn()) {
-    //     alert('Please login to add items to the cart.');
-    //     showLoginForm();  // Show login form if not logged in
-    //     return;
-    // }
+// Function to handle add to cart using sessionStorage
+// function addToCart(productId) {
+//     if (!isLoggedIn()) {
+//         alert('Please login to add items to the cart.');
+//         showLoginForm();  // Show login form if not logged in
+//         return;  // Prevent adding the item to the cart if not logged in
+//     }
 
-
-//     // Simulate adding an item to the cart
-//   let cart = JSON.parse(localStorage.getItem('cart')) || [];
+//     // Use sessionStorage instead of localStorage
+//     let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
 //     cart.push(productId);  // Add product index or ID to the cart
-//   localStorage.setItem('cart', JSON.stringify(cart)); // Save the cart to local storage
-     
-    
+//     sessionStorage.setItem('cart', JSON.stringify(cart));  // Save the cart to session storage
+
 //     alert('Item added to cart!');
 //     updateCartCount();  // Update the cart count after adding
 // }
 
-// // Function to update cart count
+// // Function to update cart count using sessionStorage
 // function updateCartCount() {
 //     let cartCountElement = document.getElementById('cart-count');
-//     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+//     let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
 
 //     if (cart.length > 0) {
 //         cartCountElement.innerText = cart.length;  // Show the number of items in the cart
@@ -464,7 +462,6 @@ function handleLogout() {
 //         cartCountElement.innerText = '';  // Hide cart count if no items
 //     }
 // }
-
 // // Function to handle add to wishlist
 // function addToWishlist(productId) {
 //     if (!isLoggedIn()) {
@@ -551,6 +548,11 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
 
 // Initial check for login state on page load
 window.onload = updateUI;
+
+
+
+
+
 
 
 

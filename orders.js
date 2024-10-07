@@ -1,3 +1,90 @@
+
+
+
+let menu = document.querySelector('#menu-bar');
+let navbar = document.querySelector('.navbar');
+let header = document.querySelector('.header-2');
+
+// Add click event listener to the menu icon
+menu.addEventListener('click', () => {
+    menu.classList.toggle('fa-times');
+    navbar.classList.toggle('active');
+});
+
+// Optional: Close the menu when clicking outside
+document.addEventListener('click', (event) => {
+    if (!menu.contains(event.target) && !navbar.contains(event.target)) {
+        menu.classList.remove('fa-times');
+        navbar.classList.remove('active');
+    }
+});
+
+
+
+//searchbar js  
+document.addEventListener('DOMContentLoaded', () => {
+    const searchBox = document.getElementById("search-box");
+    const searchIcon = document.querySelector(".header-1 .search-box-container label");
+
+    const performSearch = () => {
+        const searchQuery = searchBox.value.toLowerCase();
+        const productBoxes = document.querySelectorAll(".box");
+        let isProductFound = false;
+
+        productBoxes.forEach(box => {
+            const productName = box.querySelector("h3").textContent.toLowerCase();
+
+            if (productName.includes(searchQuery)) {
+                box.style.display = "block"; // Show product
+                isProductFound = true;
+            } else {
+                box.style.display = "none"; // Hide product
+            }
+        });
+
+        // If no product is found, show an alert
+        if (!isProductFound && searchQuery !== '') {
+            alert("Product not found");
+        }
+    };
+
+    // Trigger search when typing in the search box
+   // searchBox.addEventListener("input", performSearch);
+
+    // Trigger search when clicking the search icon
+    searchIcon.addEventListener("click", () => {
+        searchBox.focus(); // Focus on the search box to show text cursor
+        performSearch(); // Perform search
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Initialize wishlist and cart
 let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
